@@ -251,6 +251,15 @@ footer strong{color:#285976}
 .hint-button:active{transform:translateY(3px);box-shadow:0 1px 0 #d8c18e,inset 0 1px 0 #fff}
 @media(max-width:720px){.hint-wrap{margin-bottom:20px}.hint-panel{padding:14px 13px}.hint-button{padding:9px 12px;font-size:.91rem}}
 @media(prefers-reduced-motion:reduce){.hint-button{transition:none}.hint-button:active{transform:none}}
+
+/* The study hint appears beneath the answer key after every recorded answer. */
+.feedback-hint{margin-top:16px;padding:15px 16px;border:1px solid #ead8ac;border-left:4px solid #c69638;border-radius:11px;background:linear-gradient(135deg,#fffdf6,#fff6df);color:#3e3522;box-shadow:inset 0 1px 0 #fff,0 3px 0 #efdfbd}
+.feedback-hint h4{margin:0 0 7px;color:#755118;font-size:.98rem;font-weight:700;line-height:1.75}
+.feedback-hint .explanation{margin:0;color:#3e3522;white-space:normal}
+.feedback-hint .explanation p{margin:0;line-height:1.85;overflow-wrap:anywhere}
+.feedback-hint .explanation p[lang="te"]{line-height:1.95}
+.feedback-hint .explanation p+p{margin-top:12px;padding-top:12px;border-top:1px solid #e8d9b7}
+@media(max-width:720px){.feedback-hint{padding:13px 12px}.feedback-hint h4{font-size:.94rem}}
 </style>
 </head>
 <body>
@@ -297,7 +306,7 @@ footer strong{color:#285976}
         <div class="question-content">
           <div class="question" id="question-heading" role="heading" aria-level="2" tabindex="-1"></div>
           <p class="instruction" id="answer-instruction">Choose an answer to see the correct answer immediately.</p>
-          <div class="hint-wrap">
+          <div class="hint-wrap" id="hint-wrap">
             <button class="hint-button" id="hint-button" type="button" aria-expanded="false" aria-controls="hint-panel">
               <svg class="hint-icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6M10 21h4M8.3 14.7A6 6 0 1 1 15.7 14.7C14.8 15.5 15 17 15 18H9c0-1 .2-2.5-.7-3.3Z"/><path d="m10 9 2 2 2-2M12 11v4"/></svg>
               <span id="hint-button-label">Show hint</span>
@@ -310,7 +319,7 @@ footer strong{color:#285976}
             </section>
           </div>
           <div class="answers" id="answers" role="group" aria-labelledby="question-heading"></div>
-          <section class="feedback" id="feedback" aria-labelledby="feedback-title" role="status" aria-live="polite" hidden><h3 id="feedback-title"></h3><p class="correct-answer" id="correct-answer"></p><p class="explanation" id="explanation"></p></section>
+          <section class="feedback" id="feedback" aria-labelledby="feedback-title" role="status" aria-live="polite" hidden><h3 id="feedback-title"></h3><p class="correct-answer" id="correct-answer"></p><div class="feedback-hint" id="answer-hint" role="group" aria-labelledby="answer-hint-title"><h4 id="answer-hint-title" data-i18n="hintTitle">Study hint</h4><div class="explanation" id="explanation"></div></div></section>
         </div>
         <nav class="question-nav" data-i18n-aria="navigation" aria-label="Question navigation"><button class="secondary" id="previous-button" data-i18n="previous" type="button">Previous question</button><span class="nav-help" id="nav-help"></span><button class="primary" id="next-button" type="button">Next question</button></nav>
       </section>
@@ -323,7 +332,7 @@ footer strong{color:#285976}
       </section>
       <aside class="side" data-i18n-aria="scoreDetails" aria-label="Score and question details">
         <section class="score-panel" aria-labelledby="score-title"><h2 id="score-title" data-i18n="currentScore">Current score</h2><div class="score-main"><strong class="score-number" id="score-value">0</strong><span class="score-denom" id="score-denom">/ 2700</span></div><p class="score-caption" id="score-caption">1 mark for each correct answer</p><div class="score-stats"><div class="stat good"><span data-i18n="correct">Correct</span><strong id="correct-count">0</strong></div><div class="stat bad"><span data-i18n="wrong">Incorrect</span><strong id="wrong-count">0</strong></div></div><div class="progress-block"><div class="progress-title"><span data-i18n="progress">Answered</span><span id="progress-label">0 / 2700</span></div><progress id="progress" data-i18n-aria="progressLabel" value="0" max="2700" aria-label="Answered questions"></progress></div></section>
-        <section class="scope-panel" aria-labelledby="bank-title"><h2 id="bank-title" data-i18n="bankTitle">Original question bank</h2><ul class="subject-list" id="subject-list"></ul><p class="source-note" data-i18n="bankNote">2,700 questions. Original answer keys are used. Worked explanations were not provided.</p></section>
+        <section class="scope-panel" aria-labelledby="bank-title"><h2 id="bank-title" data-i18n="bankTitle">Original question bank</h2><ul class="subject-list" id="subject-list"></ul><p class="source-note" data-i18n="bankNote">2,700 questions with original answer keys and study hints for every question.</p></section>
       </aside>
     </div>
   </main>
@@ -376,7 +385,6 @@ const TEXT = {
   correctFeedback:['✓ Correct answer!','✓ సరైన సమాధానం!'],
   wrongFeedback:['✕ Your answer is incorrect','✕ మీ సమాధానం తప్పు'],
   correctOption:['Correct answer: option {n}','సరైన సమాధానం: ఎంపిక {n}'],
-  noExplanation:['No explanation was provided for this question. The correct option is shown according to the original answer key.','ఈ ప్రశ్నకు వివరణ అందుబాటులో లేదు. సరైన ఎంపిక అసలు సమాధాన కీ ప్రకారం చూపబడింది.'],
   previous:['Previous question','మునుపటి ప్రశ్న'],
   next:['Next question','తరువాతి ప్రశ్న'],
   results:['View results','ఫలితాలు చూడండి'],
@@ -401,7 +409,7 @@ const TEXT = {
   progressLabel:['Answered questions','పూర్తి చేసిన ప్రశ్నలు'],
   progressValue:['{n} of {total} questions answered','{total} ప్రశ్నలలో {n} పూర్తి'],
   bankTitle:['Original question bank','అసలు ప్రశ్నల నిధి'],
-  bankNote:['2,700 questions. Original answer keys are used. Worked explanations were not provided.','మొత్తం 2,700 ప్రశ్నలు. అసలు సమాధాన కీలు ఉపయోగించబడ్డాయి. వివరణలు అందుబాటులో లేవు.'],
+  bankNote:['2,700 questions with original answer keys and study hints for every question.','మొత్తం 2,700 ప్రశ్నలు. ప్రతి ప్రశ్నకు అసలు సమాధాన కీ, అభ్యాస సూచన ఉన్నాయి.'],
   resetTitle:['Start a new practice?','కొత్త అభ్యాసం ప్రారంభించాలా?'],
   resetDescription:['Your answers and score for the current practice will be cleared.','ప్రస్తుత అభ్యాసంలోని సమాధానాలు, స్కోరు తొలగిపోతాయి.'],
   continue:['Continue practice','కొనసాగించండి'],
@@ -523,7 +531,7 @@ function setLanguage(value){
     const matched=matchingQuestions(config);if(!matched.length)throw practiceError('noQuestions');return matched;
   }
   function score(){const answered=state.answers.size;let correct=0;for(const q of state.questions)if(state.answers.get(q.id)===q.answer)correct++;return{correct,wrong:answered-correct,answered,total:state.questions.length,percent:state.questions.length?Math.round(100*correct/state.questions.length):0};}
-  function currentSnapshot(){const q=state.questions[state.index];return{language,config:{...state.config},mode:state.review?'review':$('summary').hidden?'practice':'results',question:q?{id:q.id,number:state.index+1,subject:q.subject,topic:q.topic,sourceNumber:q.sourceNumber,hasImages:q.pictures.length>0,imageCount:q.pictures.length,text:sourceView(q.questionHTML,q.question).text,options:q.options.map((text,i)=>({option:i+1,text:sourceView(q.optionsHTML[i],text).text})),selected:state.answers.has(q.id)?state.answers.get(q.id)+1:null,hintVisible:state.hintsShown.has(q.id),...(state.hintsShown.has(q.id)?{hint:hintText(q)}:{}),...(state.answers.has(q.id)?{correctOption:q.answer+1,explanation:q.explanation}:{})}:null,score:score(),contentType:'source_question_bank'};}
+  function currentSnapshot(){const q=state.questions[state.index];return{language,config:{...state.config},mode:state.review?'review':$('summary').hidden?'practice':'results',question:q?{id:q.id,number:state.index+1,subject:q.subject,topic:q.topic,sourceNumber:q.sourceNumber,hasImages:q.pictures.length>0,imageCount:q.pictures.length,text:sourceView(q.questionHTML,q.question).text,options:q.options.map((text,i)=>({option:i+1,text:sourceView(q.optionsHTML[i],text).text})),selected:state.answers.has(q.id)?state.answers.get(q.id)+1:null,hintVisible:state.hintsShown.has(q.id)||state.answers.has(q.id),...((state.hintsShown.has(q.id)||state.answers.has(q.id))?{hint:hintText(q)}:{}),...(state.answers.has(q.id)?{correctOption:q.answer+1}:{})}:null,score:score(),contentType:'source_question_bank'};}
   function refreshTopics(reset=true,quiet=false){
     const old=reset?'all':$('topic-select').value;const subject=$('subject-select').value;const topics=[...new Set(BANK.filter(q=>subject==='all'||q.subject===subject).map(q=>q.topic))];
     $('topic-select').replaceChildren(new Option(t('allGroups'),'all'));
@@ -550,23 +558,26 @@ function setLanguage(value){
   function renderSourceQuestion(q){$('question-heading').innerHTML=sourceView(q.questionHTML,q.question).html;if(q.pictures.length){q.pictures.forEach((picture,i)=>{const button=document.createElement('button');button.type='button';button.className='source-picture';button.setAttribute('aria-label',t('imageZoom',{n:q.sourceNumber,i:i+1}));button.append(sourceImage(picture,i,q.sourceNumber));button.addEventListener('click',()=>showSourceImages(q));$('question-heading').append(button);});const help=document.createElement('p');help.className='picture-help';help.textContent=t('imageHelp');$('question-heading').append(help);}}
   function hintPair(q){return HINTS.templates[HINTS.assignments[`${q.subject}:${q.sourceNumber}`]];}
   function hintText(q){const pair=hintPair(q);return language==='en'?pair[0]:language==='te'?pair[1]:pair.join('\n\n');}
+  function renderHintContent(target,q){
+    const pair=hintPair(q);
+    target.replaceChildren();
+    for(const index of language==='both'?[0,1]:[language==='en'?0:1]){
+      const paragraph=document.createElement('p');
+      paragraph.lang=index===0?'en':'te';
+      paragraph.textContent=pair[index];
+      target.append(paragraph);
+    }
+  }
   function renderHint(q){
     const shown=state.hintsShown.has(q.id);
+    $('hint-wrap').hidden=state.answers.has(q.id);
     $('hint-button').setAttribute('aria-expanded',String(shown));
     $('hint-button').classList.toggle('is-open',shown);
     $('hint-button-label').textContent=t(shown?'hideHint':'showHint');
     $('hint-panel').hidden=!shown;
     $('hint-title').textContent=t('hintTitle');
     $('hint-content').replaceChildren();
-    if(shown){
-      const pair=hintPair(q);
-      for(const index of language==='both'?[0,1]:[language==='en'?0:1]){
-        const paragraph=document.createElement('p');
-        paragraph.lang=index===0?'en':'te';
-        paragraph.textContent=pair[index];
-        $('hint-content').append(paragraph);
-      }
-    }
+    if(shown)renderHintContent($('hint-content'),q);
   }
   function toggleHint(){
     const q=state.questions[state.index];if(!q)return;
@@ -584,8 +595,8 @@ function setLanguage(value){
       if(answered&&i===selected&&i!==q.answer){button.classList.add('wrong');const tag=document.createElement('span');tag.className='answer-flag';tag.textContent=t('yourChoice');button.append(tag);}
       button.addEventListener('click',()=>selectAnswer(i));$('answers').append(button);
     }
-    $('answers').lang=language==='en'?'en':'te';$('answer-instruction').textContent=t(answered?'recorded':'immediate');$('feedback').hidden=!answered;
-    if(answered){const correct=selected===q.answer;$('feedback').classList.toggle('incorrect',!correct);$('feedback-title').textContent=t(correct?'correctFeedback':'wrongFeedback');$('correct-answer').textContent=t('correctOption',{n:q.answer+1});if(q.optionsHTML[q.answer]){const content=document.createElement('span');content.className='answer-text';content.innerHTML=sourceView(q.optionsHTML[q.answer],q.options[q.answer]).html;$('correct-answer').append(content);}$('explanation').textContent=q.explanation||t('noExplanation');$('explanation').lang=language==='en'?'en':'te';}
+    $('answers').lang=language==='en'?'en':'te';$('answer-instruction').textContent=t(answered?'recorded':'immediate');$('feedback').hidden=!answered;if(!answered)$('explanation').replaceChildren();
+    if(answered){const correct=selected===q.answer;$('feedback').classList.toggle('incorrect',!correct);$('feedback-title').textContent=t(correct?'correctFeedback':'wrongFeedback');$('correct-answer').textContent=t('correctOption',{n:q.answer+1});if(q.optionsHTML[q.answer]){const content=document.createElement('span');content.className='answer-text';content.innerHTML=sourceView(q.optionsHTML[q.answer],q.options[q.answer]).html;$('correct-answer').append(content);}$('answer-hint-title').textContent=t('hintTitle');renderHintContent($('explanation'),q);}
     $('previous-button').disabled=state.index===0;$('next-button').disabled=!answered;$('next-button').textContent=t(state.index===state.questions.length-1?'results':'next');$('nav-help').textContent=t(answered?'firstChoice':'answerToContinue');$('review-banner').hidden=!state.review;
     if(focus)$('question-heading').focus();
   }
@@ -617,9 +628,9 @@ function setLanguage(value){
   const modelContext=document.modelContext;
   if(modelContext&&typeof modelContext.registerTool==='function'){
     const lifecycle=new AbortController();const register=tool=>{try{Promise.resolve(modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch(_){}};
-    register({name:'read_tet_practice',title:'Read TET practice',description:'Read the visible practice question, available subjects, and current score. The bank contains all 2,700 Paper 2A Maths and Science questions with original diagrams and source answer keys. Some questions are images and must be read visually. The source does not provide worked explanations. Correct answers are returned only after the learner has answered the current question.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({...currentSnapshot(),subjects:SUBJECTS.map(s=>({id:s.id,label:s.label,questions:BANK.filter(q=>q.subject===s.id).length}))})});
+    register({name:'read_tet_practice',title:'Read TET practice',description:'Read the visible practice question, available subjects, and current score. The bank contains all 2,700 Paper 2A Maths and Science questions with original diagrams and source answer keys. Some questions are images and must be read visually. Every question has a study hint, visible on request before answering and automatically after answering. Correct answers are returned only after the learner has answered the current question.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({...currentSnapshot(),subjects:SUBJECTS.map(s=>({id:s.id,label:s.label,questions:BANK.filter(q=>q.subject===s.id).length}))})});
     register({name:'start_tet_practice',title:'Start TET practice',description:'Start a new TET practice session and reset the current session score. Use replaceCurrent=true only when the learner requests replacing an unfinished session with recorded answers.',inputSchema:{type:'object',properties:{subject:{type:'string',enum:['all',...SUBJECTS.map(s=>s.id)]},count:{type:'string',enum:['10','20','30','all']},replaceCurrent:{type:'boolean'}},required:['subject','count'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||typeof input!=='object')throw new Error('Invalid input.');const config={subject:input.subject,topic:'all',count:input.count};validateConfig(config);if(state.answers.size&&score().answered<state.questions.length&&input.replaceCurrent!==true)throw new Error('Starting a new session would reset recorded answers. Ask the learner before replacing it.');return createSession(config);}});
-    register({name:'answer_tet_question',title:'Answer TET question',description:'Record one answer for the currently visible question, then show the source answer key and updated score. The source provides no worked explanations. The first answer is final. questionId must match the visible question to prevent answering a stale question.',inputSchema:{type:'object',properties:{questionId:{type:'integer'},option:{type:'integer',minimum:1,maximum:4}},required:['questionId','option'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||!Number.isInteger(input.questionId)||input.questionId!==state.questions[state.index]?.id)throw new Error('The question has changed. Read the current question first.');if(!Number.isInteger(input.option)||input.option<1||input.option>4)throw new Error('Option must be from 1 to 4.');if(!$('summary').hidden)throw new Error('Practice is complete. Start a new session to answer.');return selectAnswer(input.option-1);}});
+    register({name:'answer_tet_question',title:'Answer TET question',description:'Record one answer for the currently visible question, then show the source answer key, study hint and updated score. The first answer is final. questionId must match the visible question to prevent answering a stale question.',inputSchema:{type:'object',properties:{questionId:{type:'integer'},option:{type:'integer',minimum:1,maximum:4}},required:['questionId','option'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||!Number.isInteger(input.questionId)||input.questionId!==state.questions[state.index]?.id)throw new Error('The question has changed. Read the current question first.');if(!Number.isInteger(input.option)||input.option<1||input.option>4)throw new Error('Option must be from 1 to 4.');if(!$('summary').hidden)throw new Error('Practice is complete. Start a new session to answer.');return selectAnswer(input.option-1);}});
     register({name:'navigate_tet_practice',title:'Navigate TET practice',description:'Move to the next answered practice question or the previous question. Moving past the last answered question displays final results.',inputSchema:{type:'object',properties:{direction:{type:'string',enum:['next','previous']}},required:['direction'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>navigateQuestion(input?.direction)});
     window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
   }
