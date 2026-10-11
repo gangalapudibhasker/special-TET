@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173e59">
-  <meta name="description" content="Gangalapudi Bhasker Reddy — TET Paper 2A Maths and Science practice. 2,700 original questions, all questions in a scrolling list, instant answer feedback and scoring.">
+  <meta name="description" content="Gangalapudi Bhasker Reddy — TET Paper 2A Maths and Science practice. 2,700 original questions, compact topic-wise scrolling questions, instant answer feedback and scoring.">
   <meta name="author" content="గంగలపూడి భాస్కర్ రెడ్డి">
   <title>TET Paper 2A Practice | Gangalapudi Bhasker Reddy</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23266087'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='35' font-weight='700' fill='white'%3E2A%3C/text%3E%3C/svg%3E">
@@ -292,6 +292,98 @@ footer strong{color:#285976}
     }
     @media(prefers-reduced-motion:reduce){.practice-question{scroll-behavior:auto}}
   </style>
+<style id="topicwise-practice-theme">
+/* Compact topic-wise practice cards, based on the supplied example. */
+body{background-image:radial-gradient(ellipse at 5% 7%,#ffe8d3 0,transparent 44%),radial-gradient(ellipse at 96% 24%,#e7ddff 0,transparent 44%),radial-gradient(ellipse at 70% 95%,#dff6ef 0,transparent 43%),linear-gradient(135deg,#fff3e9,#f4efff 55%,#eefaf7)}
+.layout{grid-template-columns:minmax(0,1fr) 250px;gap:22px}
+.subject-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}
+.subject-tab{display:flex;align-items:center;gap:9px;min-height:46px;padding:8px 13px;border:1px solid #cec7e9;border-radius:12px;color:#3c3761;background:linear-gradient(135deg,#fff,#f5f0ff);box-shadow:0 3px 0 #e1dbef;font-weight:700;font-size:.93rem}
+.subject-tab[aria-pressed="true"]{background:linear-gradient(130deg,#5f4bca,#9265b1);border-color:#7b62c5;color:white;box-shadow:0 3px 0 #49368b}
+.subject-tab-count{font-size:.76rem;font-weight:500;padding:2px 6px;border-radius:7px;background:#eee9fb;white-space:nowrap;color:#625c7c}
+.subject-tab[aria-pressed="true"] .subject-tab-count{color:white;background:#ffffff24}
+.subject-tab:hover{border-color:#9078c7}
+.practice-toolbar{position:sticky;top:8px;z-index:6;border:1px solid #d9d2ed;border-radius:17px;padding:12px 16px;background:#fffffff7;box-shadow:0 5px 0 #e5def080,0 12px 24px #43326812;backdrop-filter:blur(12px);margin-bottom:12px;scroll-margin-top:16px}
+.practice-toolbar-top,.practice-toolbar-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.practice-toolbar h2{font-size:1.13rem;line-height:1.6;color:#363052;scroll-margin-top:165px}
+.practice-toolbar #list-count{font-size:.83rem;color:#776a98}
+.toolbar-score{display:flex;gap:12px;font:700 .9rem/1.5 system-ui,sans-serif;white-space:nowrap}
+.toolbar-score .good{color:var(--green)}.toolbar-score .bad{color:var(--red)}
+.practice-toolbar-actions{margin-top:8px;gap:10px}
+.jump-field{flex:1 1 150px;max-width:360px;min-width:0}
+#jump-select{min-height:40px;padding:5px 30px 5px 10px;font-size:.82rem;background:white;box-shadow:none;border-color:#ddd6ef}
+.practice-language{display:flex;gap:4px;padding:3px;background:#f2edfb;border:1px solid #ddd4f0;border-radius:10px}
+.practice-language button{min-height:34px;border:0;border-radius:7px;padding:4px 8px;background:transparent;color:#645582;font-size:.79rem;line-height:1.6;font-weight:650}
+.practice-language button[aria-pressed="true"]{background:white;color:#5d42b4;box-shadow:0 2px 3px #513e7b16}
+.practice-help{margin:0 3px 14px;color:var(--muted);font-size:.82rem;line-height:1.8}
+.practice-help p+p{margin-top:3px}
+.question-list{display:block}
+.subject-section+.subject-section{margin-top:26px}
+.subject-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:12px 15px;margin-bottom:10px;border:1px solid #d9d1ef;border-radius:13px;background:linear-gradient(110deg,#eee7fb,#fff4e8);scroll-margin-top:160px}
+.subject-heading h3{font-size:1.02rem;font-weight:750;color:#4e3e7c}.subject-heading p{font-size:.81rem;color:#736186}
+.group-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:7px 5px 10px;color:#7e6c9b}
+.group-heading h4{font-size:.81rem;margin:0;font-weight:600}.group-heading span{font-size:.76rem}
+.question-group{scroll-margin-top:164px}.question-group+.question-group{margin-top:17px}
+.topic-questions{display:grid;gap:13px}
+.practice-question,.practice-question:hover{border:1px solid #e7dff2;border-radius:18px;background:white;box-shadow:0 4px 0 #e9e1f03b,0 9px 20px #35205d08;transform:none;content-visibility:auto;contain-intrinsic-size:auto 215px;scroll-margin-top:175px}
+.practice-question .question-content{padding:13px 14px 10px}
+.question-topline{display:grid;grid-template-columns:31px minmax(0,1fr);gap:10px;align-items:start;margin-bottom:10px}
+.practice-question .question-number{display:grid;place-items:center;width:31px;min-height:30px;padding:2px 3px;border-radius:9px;background:linear-gradient(135deg,#fbebdc,#fff4e8);color:#a95320;font:750 .86rem/1.4 system-ui;margin:0;white-space:normal;overflow-wrap:anywhere}
+.practice-question .question{margin:0;font-size:1.01rem;line-height:1.65;font-weight:600;color:#29243e}
+.practice-question .question p{margin:0 0 4px}.practice-question .question p:last-child{margin-bottom:0}
+.practice-question .question .te{font-weight:450;line-height:1.85;color:#655779}
+.practice-question .answers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;scroll-margin-top:175px}
+.practice-question .answers.options-long{grid-template-columns:repeat(2,minmax(0,1fr))}
+.practice-question .answers.options-very-long{grid-template-columns:minmax(0,1fr)}
+.practice-question .answer{display:flex;align-items:center;flex-wrap:wrap;gap:7px;min-height:48px;min-width:0;margin:0;padding:8px;border:1px solid #dcd2ef;border-radius:13px;background:white;color:#302945;box-shadow:0 2px 0 #ece5f530;font-size:.94rem;line-height:1.6}
+.practice-question .answer .letter{flex:0 0 23px;min-width:23px;height:23px;margin:0;border:1px solid #e4ddf2;border-radius:50%;box-shadow:none;background:#f5f0fc;color:#53456f;font:.79rem/1 system-ui;font-weight:750;align-self:center}
+.practice-question .answer .answer-text{flex:1 1 20px;min-width:0}
+.practice-question .answer .answer-text p{margin:0;line-height:1.7}
+.practice-question .answer .answer-flag{flex:1 0 100%;max-width:none!important;margin:0;text-align:center;font-size:.73rem;line-height:1.5}
+.practice-question .answer.correct{border-color:var(--green);background:var(--green-bg);color:#134728;padding:8px;box-shadow:0 2px 0 #cbe5d3}
+.practice-question .answer.wrong{border-color:var(--red);background:var(--red-bg);color:#8d1c29;padding:8px;box-shadow:0 2px 0 #efcdd2}
+.practice-question .answer.correct .letter{background:var(--green);color:white;border-color:var(--green)}
+.practice-question .answer.wrong .letter{background:var(--red);color:white;border-color:var(--red)}
+.practice-question .hint-wrap{margin:7px 0 0}
+.question-tools{display:flex;align-items:center;justify-content:space-between;gap:9px;min-height:35px}
+.practice-question .hint-button{min-height:34px;gap:6px;border:0;border-radius:7px;padding:3px 7px;background:#faf6ff;box-shadow:none;color:#77619c;font-size:.75rem;line-height:1.6;font-weight:550}
+.practice-question .hint-button .hint-chevron{width:6px;height:6px;border-width:1.5px;margin-left:2px}
+.question-origin{font-size:.69rem;color:#9a8bac}
+.practice-question .hint-panel{margin-top:8px;padding:12px;font-size:.9rem}
+.practice-question [data-part="hint-content"] p{margin:0;line-height:1.85}.practice-question [data-part="hint-content"] p+p{margin-top:8px}
+.practice-question .source-picture{margin:8px 0;box-shadow:none;border:1px solid #e8e1f0;padding:3px;max-width:100%}
+.practice-question .picture-help{font-size:.72rem;line-height:1.6;color:#88799a;margin:3px 0 0}
+.practice-question .feedback{margin-top:10px;padding:12px;border-radius:12px;font-size:.9rem}
+.practice-question .feedback h4{font-size:.91rem;margin:0 0 5px}
+.practice-question .correct-answer{font-size:.87rem;margin-bottom:0}
+.practice-question .correct-answer .answer-text{display:inline;margin-left:6px}
+.practice-question .feedback-hint{margin-top:10px;padding:10px;box-shadow:none}
+.practice-question .feedback-hint h5{font-size:.85rem;margin-bottom:5px}
+.practice-question .feedback-hint .explanation{font-size:.91rem}
+.side{top:8px}.side .score-panel,.side .scope-panel{padding:16px}
+.side .score-number{font-size:2.1rem}
+.side .score-stats{margin:12px 0}
+.side .scope-panel{font-size:.8rem}
+@media(max-width:980px){.layout{display:block}.side{display:none}.practice-toolbar{top:6px}.practice-column{width:100%}}
+@media(max-width:600px){
+  .subject-tabs{gap:7px}.subject-tab{flex:1 1 92px;padding:6px 8px;font-size:.84rem;justify-content:center;gap:5px}.subject-tab-count{font-size:.68rem;padding:2px 4px}
+  .practice-toolbar{padding:10px 12px;border-radius:14px}.practice-toolbar h2{font-size:1rem}.practice-toolbar #list-count{font-size:.75rem}
+  .practice-toolbar-actions{gap:7px}.jump-field{flex-basis:110px}.practice-language button{font-size:.73rem;padding:4px 6px}
+  .practice-question .question-content{padding:11px 11px 7px}.question-topline{grid-template-columns:28px minmax(0,1fr);gap:8px}
+  .practice-question .question-number{width:28px;min-height:28px;font-size:.8rem}
+  .practice-question .question{font-size:.94rem}.practice-question .answers{gap:5px}
+  .practice-question .answer{padding:7px 6px;gap:5px;font-size:.84rem;min-height:48px;border-radius:11px}
+  .practice-question .answer.correct,.practice-question .answer.wrong{padding:7px 6px}
+  .practice-question .answer .letter{flex-basis:21px;min-width:21px;height:21px;font-size:.73rem}
+  .practice-question .answer .answer-text{flex-basis:15px}
+  .practice-question .hint-button{min-height:38px}.question-origin{font-size:.65rem}
+  .subject-heading{padding:10px 12px}.subject-heading h3{font-size:.95rem}.subject-heading p{font-size:.73rem}
+  .practice-question,.practice-question:hover{contain-intrinsic-size:auto 245px;scroll-margin-top:175px}
+}
+@media(max-width:440px){.practice-question .answers.options-long{grid-template-columns:minmax(0,1fr)}.practice-toolbar-actions{align-items:stretch}.practice-language{flex-wrap:wrap}.subject-tab{font-size:.79rem}.practice-question .answer{font-size:.79rem}}
+@media(hover:hover) and (pointer:fine){.practice-question .answer:not(:disabled):hover{border-color:#aa8dcd;background:#faf7ff;box-shadow:0 3px 0 #e3d8f2}.practice-question .hint-button:hover{background:#f0e8fc;transform:none;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.practice-toolbar{backdrop-filter:none}.subject-tab{transition:none}}
+
+</style>
 </head>
 <body>
   <div class="ambient-scene" aria-hidden="true">
@@ -319,13 +411,14 @@ footer strong{color:#285976}
   <main>
 
     <div class="notice"><strong data-i18n="bankSummary">2,700 original questions · Paper 2A Maths &amp; Science.</strong></div>
+    <nav class="subject-tabs" id="subject-tabs" data-i18n-aria="quickSubjects" aria-label="Choose a subject"></nav>
     <section class="controls" aria-labelledby="practice-settings">
       <div class="controls-title"><h2 id="practice-settings" data-i18n="settings">Practice settings</h2><span class="available" id="available-count">2,700 questions available</span></div>
       <div class="fields">
         <div class="field"><label for="subject-select" data-i18n="subject">Subject</label><select id="subject-select"><option value="all">All subjects · 2,700</option></select></div>
         <div class="field"><label for="topic-select" data-i18n="group">Question group</label><select id="topic-select"><option value="all">All question groups</option></select></div>
         <div class="field"><label for="count-select" data-i18n="count">Number of questions</label><select id="count-select"><option value="10">10 questions</option><option value="20">20 questions</option><option value="30">30 questions</option><option value="all" selected>All questions</option></select></div>
-        <button class="primary" id="start-button" data-i18n="start" type="button">Start practice</button>
+        <button class="primary" id="start-button" data-i18n="start" type="button">Restart this selection</button>
       </div>
       <p id="live-status" role="status" aria-live="polite">Choose one answer for each question.</p>
     </section>
@@ -333,12 +426,11 @@ footer strong{color:#285976}
     <div class="layout">
       <div class="practice-column">
       <section class="practice-list" id="quiz-card" aria-labelledby="scroll-title">
-        <div class="list-intro">
-          <h2 id="scroll-title" data-i18n="scrollPractice" tabindex="-1">Scroll &amp; practice</h2>
-          <p id="list-count" role="status">2,700 questions shown · answer in any order</p>
-          <p data-i18n="scrollHelp">All questions in your selected practice are shown below. Scroll and answer any question to see immediate feedback.</p>
-          <p class="first-choice-note" data-i18n="firstChoice">Only your first choice for each question is recorded.</p>
+        <div class="practice-toolbar">
+          <div class="practice-toolbar-top"><div><h2 id="scroll-title" tabindex="-1">Topic-wise practice</h2><p id="list-count" role="status" aria-live="polite">0 / 2700 answered</p></div><div class="toolbar-score" aria-live="polite" aria-atomic="true"><span class="good" id="toolbar-correct" aria-label="Correct: 0">✓ 0</span><span class="bad" id="toolbar-wrong" aria-label="Incorrect: 0">✕ 0</span><button id="quick-results" type="button" class="secondary" data-i18n="results" hidden disabled>View results</button></div></div>
+          <div class="practice-toolbar-actions"><div class="jump-field"><label class="sr-only" for="jump-select" data-i18n="jumpTo">Jump to a section</label><select id="jump-select"><option value="_">Jump to a section…</option></select></div><div class="practice-language" role="group" data-i18n-aria="language" aria-label="Language"><button type="button" data-language-choice="en" aria-pressed="true" lang="en">English</button><button type="button" data-language-choice="te" aria-pressed="false" lang="te">తెలుగు</button><button type="button" data-language-choice="both" aria-pressed="false">Both</button></div></div>
         </div>
+        <div class="practice-help"><p data-i18n="scrollHelp">All selected questions are shown together. Scroll and answer in any order; switching subjects or groups keeps your answers.</p><p data-i18n="firstChoice">Only your first choice for each question is recorded.</p></div>
         <div class="review-banner" id="review-banner" data-i18n="review" hidden>Answer review</div>
         <div class="question-list" id="question-list"></div>
       </section>
@@ -373,8 +465,13 @@ const TEXT = {
   heading:['TET Paper 2A · Maths & Science','టెట్ పేపర్ 2A · మ్యాథ్స్ & సైన్స్'],
   practice:['Practice','అభ్యాసం'],
   skip:['Go to the questions','ప్రశ్నల దగ్గరకు వెళ్ళండి'],
-  scrollPractice:['Scroll & practice','స్క్రోల్ చేసి అభ్యాసం చేయండి'],
-  scrollHelp:['All questions in your selected practice are shown below. Scroll and answer any question to see immediate feedback.','మీరు ఎంచుకున్న అభ్యాసంలోని అన్ని ప్రశ్నలు క్రింద ఉన్నాయి. స్క్రోల్ చేస్తూ ఏ ప్రశ్నకైనా సమాధానం ఎంచుకుంటే వెంటనే ఫలితం కనిపిస్తుంది.'],
+  scrollPractice:['Topic-wise practice','విభాగాల వారీగా అభ్యాసం'],
+  topicPractice:['Topic-wise practice','విభాగాల వారీగా అభ్యాసం'],
+  compactProgress:['{n} / {total} answered','{n} / {total} పూర్తి'],
+  quickSubjects:['Choose a subject','విభాగాన్ని ఎంచుకోండి'],
+  jumpTo:['Jump to a section…','ప్రశ్నల సమూహానికి వెళ్ళండి…'],
+  restartSelection:['Restart this selection','ఈ ఎంపికను మళ్లీ ప్రారంభించండి'],
+  scrollHelp:['All selected questions are shown together. Scroll and answer in any order; switching subjects or groups keeps your answers.','ఎంచుకున్న అన్ని ప్రశ్నలు ఒకేసారి కనిపిస్తాయి. స్క్రోల్ చేసి ఏ క్రమంలోనైనా సమాధానం ఇవ్వండి. విభాగం లేదా సమూహం మార్చినా సమాధానాలు నిలుస్తాయి.'],
   visibleQuestions:['{n} questions shown · answer in any order','{n} ప్రశ్నలు కనిపిస్తున్నాయి · ఏ క్రమంలోనైనా సమాధానం ఇవ్వండి'],
   bankSummary:['2,700 original questions · Paper 2A Maths & Science.','2,700 అసలు ప్రశ్నలు · పేపర్ 2A మ్యాథ్స్ & సైన్స్.'],
   languageHelp:['Questions available in one language and text inside images remain in their original form.','ఒకే భాషలో ఉన్న ప్రశ్నలు, చిత్రాల్లోని పాఠ్యం వాటి అసలు రూపంలోనే ఉంటాయి.'],
@@ -387,9 +484,9 @@ const TEXT = {
   allQuestions:['All questions','అన్ని ప్రశ్నలు'],
   questionCount:['{n} questions','{n} ప్రశ్నలు'],
   available:['{n} questions available','అందుబాటులో {n} ప్రశ్నలు'],
-  start:['Start practice','అభ్యాసం ప్రారంభించండి'],
+  start:['Restart this selection','ఈ ఎంపికను మళ్లీ ప్రారంభించండి'],
   chooseAnswer:['Choose one answer for each question.','ప్రతి ప్రశ్నకు ఒక సమాధానాన్ని ఎంచుకోండి.'],
-  settingsChanged:['Start practice after changing your settings.','ఎంపికలను మార్చిన తర్వాత అభ్యాసం ప్రారంభించండి.'],
+  settingsChanged:['Choose a subject or group to show its questions immediately.','విభాగం లేదా ప్రశ్నల సమూహం ఎంచుకుంటే వెంటనే ప్రశ్నలు కనిపిస్తాయి.'],
   started:['{subject} · Practice started with {n} questions.','{subject} · {n} ప్రశ్నల అభ్యాసం ప్రారంభమైంది.'],
   question:['Question {n} / {total}','ప్రశ్న {n} / {total}'],
   originalNumber:['Original question {n}','మూలప్రశ్న {n}'],
@@ -434,7 +531,7 @@ const TEXT = {
   bankTitle:['Original question bank','అసలు ప్రశ్నల నిధి'],
   bankNote:['2,700 questions with original answer keys and study hints for every question.','మొత్తం 2,700 ప్రశ్నలు. ప్రతి ప్రశ్నకు అసలు సమాధాన కీ, అభ్యాస సూచన ఉన్నాయి.'],
   resetTitle:['Start a new practice?','కొత్త అభ్యాసం ప్రారంభించాలా?'],
-  resetDescription:['Your answers and score for the current practice will be cleared.','ప్రస్తుత అభ్యాసంలోని సమాధానాలు, స్కోరు తొలగిపోతాయి.'],
+  resetDescription:['Answers and score for this selection will be cleared.','ఈ ఎంపికలోని సమాధానాలు, స్కోరు తొలగిపోతాయి.'],
   continue:['Continue practice','కొనసాగించండి'],
   newPractice:['New practice','కొత్త అభ్యాసం'],
   resumed:['Continue your current practice.','ప్రస్తుత అభ్యాసాన్ని కొనసాగించండి.'],
@@ -511,7 +608,7 @@ function fillSubjectLabels(){
     const li=document.createElement('li'),label=document.createElement('span'),count=document.createElement('span');
     label.textContent=subjectLabel(s.id);label.title=t('long_'+s.id);count.className='subject-count';count.textContent=String(n);li.append(label,count);$('subject-list').append(li);
   }
-  $('subject-select').value=selected;
+  $('subject-select').value=selected;fillSubjectTabs();
 }
 function applyLanguage(){
   document.documentElement.lang=language==='en'?'en':'te';
@@ -553,8 +650,8 @@ function setLanguage(value){
     if(config.topic!=='all'&&!BANK.some(q=>q.topic===config.topic&&(config.subject==='all'||q.subject===config.subject)))throw practiceError('invalidGroup');
     const matched=matchingQuestions(config);if(!matched.length)throw practiceError('noQuestions');return matched;
   }
-  function score(){const answered=state.answers.size;let correct=0;for(const q of state.questions)if(state.answers.get(q.id)===q.answer)correct++;return{correct,wrong:answered-correct,answered,total:state.questions.length,percent:state.questions.length?Math.round(100*correct/state.questions.length):0};}
-  function currentSnapshot(){const q=state.questions[state.index];return{language,displayMode:'scroll',renderedQuestions:state.questions.length,config:{...state.config},mode:state.review?'review':$('summary').hidden?'practice':'results',question:q?{id:q.id,number:state.index+1,subject:q.subject,topic:q.topic,sourceNumber:q.sourceNumber,hasImages:q.pictures.length>0,imageCount:q.pictures.length,text:sourceView(q.questionHTML,q.question).text,options:q.options.map((text,i)=>({option:i+1,text:sourceView(q.optionsHTML[i],text).text})),selected:state.answers.has(q.id)?state.answers.get(q.id)+1:null,hintVisible:state.hintsShown.has(q.id)||state.answers.has(q.id),...((state.hintsShown.has(q.id)||state.answers.has(q.id))?{hint:hintText(q)}:{}),...(state.answers.has(q.id)?{correctOption:q.answer+1}:{})}:null,score:score(),contentType:'source_question_bank'};}
+  function score(){let answered=0,correct=0;for(const q of state.questions){if(!state.answers.has(q.id))continue;answered++;if(state.answers.get(q.id)===q.answer)correct++;}return{correct,wrong:answered-correct,answered,total:state.questions.length,percent:state.questions.length?Math.round(100*correct/state.questions.length):0};}
+  function currentSnapshot(){const q=state.questions[state.index];return{language,displayMode:'scroll',grouping:'subject_and_question_group',renderedQuestions:state.questions.length,config:{...state.config},mode:state.review?'review':$('summary').hidden?'practice':'results',question:q?{id:q.id,number:state.index+1,subject:q.subject,topic:q.topic,sourceNumber:q.sourceNumber,hasImages:q.pictures.length>0,imageCount:q.pictures.length,text:sourceView(q.questionHTML,q.question).text,options:q.options.map((text,i)=>({option:i+1,text:sourceView(q.optionsHTML[i],text).text})),selected:state.answers.has(q.id)?state.answers.get(q.id)+1:null,hintVisible:state.hintsShown.has(q.id)||state.answers.has(q.id),...((state.hintsShown.has(q.id)||state.answers.has(q.id))?{hint:hintText(q)}:{}),...(state.answers.has(q.id)?{correctOption:q.answer+1}:{})}:null,score:score(),contentType:'source_question_bank'};}
   function refreshTopics(reset=true,quiet=false){
     const old=reset?'all':$('topic-select').value;const subject=$('subject-select').value;const topics=[...new Set(BANK.filter(q=>subject==='all'||q.subject===subject).map(q=>q.topic))];
     $('topic-select').replaceChildren(new Option(t('allGroups'),'all'));
@@ -567,14 +664,29 @@ function setLanguage(value){
   function syncControls(){
     $('subject-select').value=state.config.subject;refreshTopics();$('topic-select').value=state.config.topic;$('count-select').value=state.config.count;$('available-count').textContent=t('available',{n:matchingQuestions(state.config).length});
   }
-  function createSession(config,focus=true){
+  function createSession(config,focus=true,preserveAnswers=false){
     const matched=validateConfig(config);const n=config.count==='all'?matched.length:Math.min(Number(config.count),matched.length);
-    state.questions=matched.slice(0,n);state.index=0;state.answers.clear();state.hintsShown.clear();state.review=false;state.config={...config,count:String(config.count)};
+    state.questions=matched.slice(0,n);state.index=0;state.review=false;state.config={...config,count:String(config.count)};
+    if(!preserveAnswers)for(const q of state.questions){state.answers.delete(q.id);state.hintsShown.delete(q.id);}
     $('summary').hidden=true;$('quiz-card').hidden=false;$('error').hidden=true;visibleError=null;syncControls();
     setLive('started',{subjectId:config.subject,subject:TEXT[config.subject==='all'?'allSubjects':'subject_'+config.subject],n});
-    renderQuestion(focus);updateScore();return currentSnapshot();
+    renderQuestion(focus);
+    if(score().answered===state.questions.length)showResults(false);
+    return currentSnapshot();
   }
-  function updateScore(){const s=score();$('score-value').textContent=s.correct;$('score-denom').textContent=`/ ${s.total}`;$('correct-count').textContent=s.correct;$('wrong-count').textContent=s.wrong;$('progress-label').textContent=`${s.answered} / ${s.total}`;$('progress').max=s.total;$('progress').value=s.answered;$('progress').setAttribute('aria-valuetext',t('progressValue',{n:s.answered,total:s.total}));$('score-caption').textContent=s.answered?t('percentage',{n:s.percent}):t('oneMark');const complete=s.total>0&&s.answered===s.total;$('show-results-button').disabled=!complete;$('show-results-button').hidden=!complete;}
+  function updateScore(){
+    const s=score();
+    $('score-value').textContent=s.correct;$('score-denom').textContent=`/ ${s.total}`;
+    $('correct-count').textContent=s.correct;$('wrong-count').textContent=s.wrong;
+    $('toolbar-correct').textContent=`✓ ${s.correct}`;$('toolbar-wrong').textContent=`✕ ${s.wrong}`;
+    $('toolbar-correct').setAttribute('aria-label',`${t('correct')}: ${s.correct}`);$('toolbar-wrong').setAttribute('aria-label',`${t('wrong')}: ${s.wrong}`);
+    $('list-count').textContent=t('compactProgress',{n:s.answered,total:s.total});
+    $('progress-label').textContent=`${s.answered} / ${s.total}`;$('progress').max=s.total;$('progress').value=s.answered;
+    $('progress').setAttribute('aria-valuetext',t('progressValue',{n:s.answered,total:s.total}));$('score-caption').textContent=s.answered?t('percentage',{n:s.percent}):t('oneMark');
+    const complete=s.total>0&&s.answered===s.total;
+    for(const id of ['show-results-button','quick-results']){$(id).disabled=!complete;$(id).hidden=!complete;}
+    updateTopicProgress();
+  }
   function sourceImage(picture,index,sourceNumber){const image=document.createElement('img');image.src=picture.src;image.width=picture.width;image.height=picture.height;image.alt=t('imageAlt',{n:sourceNumber,i:index+1});return image;}
   function fillSourceImages(q){$('image-title').textContent=`${subjectLabel(q.subject)} · ${t('originalNumber',{n:q.sourceNumber})}`;$('image-full').replaceChildren();q.pictures.forEach((picture,i)=>$('image-full').append(sourceImage(picture,i,q.sourceNumber)));}
   function showSourceImages(q){state.imageQuestionId=q.id;fillSourceImages(q);$('image-dialog').showModal();}
@@ -590,6 +702,7 @@ function setLanguage(value){
       target.append(paragraph);
     }
   }
+  let renderedSubjects=[],renderedGroups=[];
   function cardFor(questionId){return $(`practice-question-${questionId}`);}
   function questionFor(questionId){return state.questions.find(q=>q.id===questionId);}
   function part(card,name){return card.querySelector(`[data-part="${name}"]`);}
@@ -640,29 +753,20 @@ function setLanguage(value){
   function buildQuestionCard(q,index){
     const card=document.createElement('article');
     card.className='quiz practice-question';card.id=`practice-question-${q.id}`;card.dataset.questionId=String(q.id);
+    card.dataset.subject=q.subject;card.dataset.topic=q.topic;card.dataset.index=String(index+1);
     card.setAttribute('aria-labelledby',`question-heading-${q.id}`);
-    card.innerHTML=`<div class="question-meta"><span class="question-number" data-part="number"></span><span class="chip" data-part="subject"></span><span class="topic-tag" data-part="topic"></span></div>
-      <div class="question-content">
-        <div class="question" id="question-heading-${q.id}" data-part="heading" role="heading" aria-level="3" tabindex="-1"></div>
-        <p class="instruction" data-part="instruction"></p>
-        <div class="hint-wrap" data-part="hint-wrap">
-          <button class="hint-button" data-part="hint-button" data-action="hint" type="button" aria-expanded="false" aria-controls="hint-panel-${q.id}">
-            <svg class="hint-icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6M10 21h4M8.3 14.7A6 6 0 1 1 15.7 14.7C14.8 15.5 15 17 15 18H9c0-1 .2-2.5-.7-3.3Z"/><path d="m10 9 2 2 2-2M12 11v4"/></svg>
-            <span data-part="hint-button-label"></span><span class="hint-chevron" aria-hidden="true"></span>
-          </button>
-          <section class="hint-panel" id="hint-panel-${q.id}" data-part="hint-panel" aria-labelledby="hint-title-${q.id}" hidden>
-            <h4 id="hint-title-${q.id}" data-part="hint-title"></h4><div data-part="hint-content" aria-live="polite" aria-atomic="true"></div><p class="hint-note" data-part="hint-note"></p>
-          </section>
-        </div>
+    card.innerHTML=`<div class="question-content">
+        <div class="question-topline"><span class="question-number" data-part="number"></span><div class="question" id="question-heading-${q.id}" data-part="heading" role="heading" aria-level="5" tabindex="-1"></div></div>
+        <p class="instruction sr-only" data-part="instruction"></p>
         <div class="answers" data-part="answers" role="group" aria-labelledby="question-heading-${q.id}"></div>
-        <section class="feedback" data-part="feedback" aria-labelledby="feedback-title-${q.id}" role="status" aria-live="polite" tabindex="-1" hidden>
-          <h4 id="feedback-title-${q.id}" data-part="feedback-title"></h4><p class="correct-answer" data-part="correct-answer"></p>
-          <div class="feedback-hint" role="group" aria-labelledby="answer-hint-title-${q.id}"><h5 id="answer-hint-title-${q.id}" data-part="answer-hint-title"></h5><div class="explanation" data-part="explanation"></div></div>
-        </section>
+        <div class="hint-wrap" data-part="hint-wrap">
+          <div class="question-tools"><button class="hint-button" data-part="hint-button" data-action="hint" type="button" aria-expanded="false" aria-controls="hint-panel-${q.id}"><span aria-hidden="true">✦</span><span data-part="hint-button-label"></span><span class="hint-chevron" aria-hidden="true"></span></button><span class="question-origin" data-part="origin"></span></div>
+          <section class="hint-panel" id="hint-panel-${q.id}" data-part="hint-panel" aria-labelledby="hint-title-${q.id}" hidden><h4 id="hint-title-${q.id}" data-part="hint-title"></h4><div data-part="hint-content" aria-live="polite" aria-atomic="true"></div><p class="hint-note" data-part="hint-note"></p></section>
+        </div>
+        <section class="feedback" data-part="feedback" aria-labelledby="feedback-title-${q.id}" role="status" aria-live="polite" tabindex="-1" hidden><h4 id="feedback-title-${q.id}" data-part="feedback-title"></h4><p class="correct-answer" data-part="correct-answer"></p><div class="feedback-hint" role="group" aria-labelledby="answer-hint-title-${q.id}"><h5 id="answer-hint-title-${q.id}" data-part="answer-hint-title"></h5><div class="explanation" data-part="explanation"></div></div></section>
       </div>`;
-    part(card,'number').textContent=t('question',{n:index+1,total:state.questions.length});
-    part(card,'subject').textContent=subjectLabel(q.subject);
-    part(card,'topic').textContent=`${t('originalNumber',{n:q.sourceNumber})} · ${topicLabel(q.topic)}`;
+    const number=part(card,'number');number.textContent=String(q.sourceNumber);number.setAttribute('aria-label',t('originalNumber',{n:q.sourceNumber}));
+    part(card,'origin').textContent=subjectLabel(q.subject);
     const heading=part(card,'heading'),view=sourceView(q.questionHTML,q.question);
     if(view.html)heading.innerHTML=view.html;else heading.textContent=view.text;
     heading.lang=language==='en'?'en':'te';
@@ -676,9 +780,10 @@ function setLanguage(value){
     }
     part(card,'hint-title').textContent=t('hintTitle');part(card,'answer-hint-title').textContent=t('hintTitle');part(card,'hint-note').textContent=t('hintHelp');
     const answers=part(card,'answers');answers.lang=language==='en'?'en':'te';
+    const optionLengths=[];
     for(let i=0;i<q.options.length;i++){
       const button=document.createElement('button');button.type='button';button.className='answer';button.dataset.action='answer';button.dataset.option=String(i);
-      const option=sourceView(q.optionsHTML[i]||'',q.options[i]);
+      const option=sourceView(q.optionsHTML[i]||'',q.options[i]);optionLengths.push(option.text.length);
       button.setAttribute('aria-label',`${i+1}. ${option.text||t('optionNumber',{n:i+1})}`);
       const letter=document.createElement('span');letter.className='letter';letter.textContent=String(i+1);letter.setAttribute('aria-hidden','true');
       const text=document.createElement('span');text.className='answer-text';
@@ -686,15 +791,63 @@ function setLanguage(value){
       const flag=document.createElement('span');flag.className='answer-flag';flag.hidden=true;
       button.append(letter,text,flag);answers.append(button);
     }
+    if(Math.max(...optionLengths)>65)answers.classList.add('options-long');
+    if(Math.max(...optionLengths)>180)answers.classList.add('options-very-long');
     card.querySelectorAll('img').forEach(image=>{image.loading='lazy';image.decoding='async';});
     renderCardAnswer(card,q);return card;
   }
-  function renderQuestion(focus=false){
+  function fillSubjectTabs(){
     const fragment=document.createDocumentFragment();
-    state.questions.forEach((q,index)=>fragment.append(buildQuestionCard(q,index)));
+    for(const subject of ['all',...SUBJECTS.map(s=>s.id)]){
+      const button=document.createElement('button');button.type='button';button.className='subject-tab';button.dataset.subjectChoice=subject;
+      button.setAttribute('aria-pressed',String(state.config.subject===subject));
+      const label=document.createElement('span');label.textContent=subjectLabel(subject);
+      const count=document.createElement('span');count.className='subject-tab-count';count.dataset.subjectProgress=subject;
+      button.append(label,count);fragment.append(button);
+    }
+    $('subject-tabs').replaceChildren(fragment);
+  }
+  function updateTopicProgress(){
+    const answered=questions=>questions.reduce((n,q)=>n+Number(state.answers.has(q.id)),0);
+    for(const section of renderedSubjects)section.progress.textContent=t('compactProgress',{n:answered(section.questions),total:section.questions.length});
+    for(const section of renderedGroups)section.progress.textContent=t('compactProgress',{n:answered(section.questions),total:section.questions.length});
+    for(const button of $('subject-tabs').querySelectorAll('[data-subject-choice]')){
+      const subject=button.dataset.subjectChoice,questions=subject==='all'?BANK:BANK.filter(q=>q.subject===subject);
+      button.setAttribute('aria-pressed',String(subject===state.config.subject));
+      button.querySelector('[data-subject-progress]').textContent=`${answered(questions)} / ${questions.length}`;
+    }
+  }
+  function renderQuestion(focus=false){
+    const fragment=document.createDocumentFragment(),jump=$('jump-select');
+    jump.replaceChildren(new Option(t('jumpTo'),'_'));renderedSubjects=[];renderedGroups=[];
+    for(const subject of SUBJECTS){
+      const entries=state.questions.map((q,index)=>({q,index})).filter(entry=>entry.q.subject===subject.id);if(!entries.length)continue;
+      const section=document.createElement('section');section.className='subject-section';section.id=`subject-section-${subject.id}`;section.dataset.subject=subject.id;
+      const titleId=`subject-heading-${subject.id}`;section.setAttribute('aria-labelledby',titleId);
+      const header=document.createElement('header');header.className='subject-heading';
+      const title=document.createElement('h3');title.id=titleId;title.tabIndex=-1;title.textContent=t('long_'+subject.id);
+      const progress=document.createElement('p');progress.dataset.subjectSectionProgress=subject.id;header.append(title,progress);section.append(header);
+      renderedSubjects.push({questions:entries.map(entry=>entry.q),progress});
+      if(state.config.subject==='all')jump.add(new Option(`${subjectLabel(subject.id)} · ${entries.length}`,section.id));
+      const topics=[...new Set(entries.map(entry=>entry.q.topic))];
+      for(const topic of topics){
+        const groupEntries=entries.filter(entry=>entry.q.topic===topic),group=document.createElement('section');
+        group.className='question-group';group.id=`question-group-${subject.id}-${groupEntries[0].q.sourceNumber}`;group.dataset.subject=subject.id;group.dataset.topic=topic;
+        const groupTitleId=`${group.id}-title`;group.setAttribute('aria-labelledby',groupTitleId);
+        const groupHeader=document.createElement('header');groupHeader.className='group-heading';
+        const groupTitle=document.createElement('h4');groupTitle.id=groupTitleId;groupTitle.tabIndex=-1;groupTitle.textContent=topicLabel(topic);
+        const groupProgress=document.createElement('span');groupProgress.dataset.groupProgress=group.id;groupHeader.append(groupTitle,groupProgress);group.append(groupHeader);
+        const list=document.createElement('div');list.className='topic-questions';
+        for(const entry of groupEntries)list.append(buildQuestionCard(entry.q,entry.index));
+        group.append(list);section.append(group);renderedGroups.push({questions:groupEntries.map(entry=>entry.q),progress:groupProgress});
+        if(state.config.subject!=='all')jump.add(new Option(`${topicLabel(topic)} · ${groupEntries.length}`,group.id));
+      }
+      fragment.append(section);
+    }
     $('question-list').replaceChildren(fragment);
-    $('list-count').textContent=t('visibleQuestions',{n:state.questions.length});
+    $('scroll-title').textContent=state.config.subject==='all'?t('topicPractice'):t('long_'+state.config.subject);
     $('review-banner').hidden=!state.review;
+    updateScore();
     if(focus)$('scroll-title').focus();
   }
   function selectAnswer(option,questionId=state.questions[state.index]?.id){
@@ -704,10 +857,15 @@ function setLanguage(value){
     if(state.answers.has(q.id))return currentSnapshot();
     state.answers.set(q.id,option);
     const card=cardFor(q.id);renderCardAnswer(card,q);updateScore();
-    if(state.answers.size===state.questions.length)showResults(false);
+    if(score().answered===state.questions.length)showResults(false);
     part(card,'feedback').focus({preventScroll:true});
     return currentSnapshot();
   }
+  function showSelection(config){return createSession(config,true,true);}
+  function chooseSubject(subject){
+    $('subject-select').value=subject;refreshTopics();$('count-select').value='all';showSelection(readControls());
+  }
+
   function showResults(focus=true){
     const s=score();if(s.answered<s.total)throw practiceError('finishAll');
     $('quiz-card').hidden=false;$('summary').hidden=false;$('result-correct').textContent=s.correct;$('result-wrong').textContent=s.wrong;$('result-percent').textContent=`${s.percent}%`;$('summary-message').textContent=t('answeredMessage',{n:s.total});$('result-subjects').replaceChildren();
@@ -722,7 +880,7 @@ function setLanguage(value){
   }
   function reviewAnswers(){if(score().answered<state.questions.length)throw practiceError('unfinished');state.review=true;state.index=0;$('quiz-card').hidden=false;$('review-banner').hidden=false;$('scroll-title').focus();return currentSnapshot();}
   let pendingConfig=null;
-  function requestSession(config){try{validateConfig(config);if(state.answers.size&&score().answered<state.questions.length){pendingConfig=config;$('restart-dialog').showModal();}else createSession(config);}catch(e){visibleError={key:e.translationKey,message:e.message};$('error').textContent=e.message;$('error').hidden=false;}}
+  function requestSession(config){try{validateConfig(config);if(score().answered>0){pendingConfig=config;$('restart-dialog').showModal();}else createSession(config);}catch(e){visibleError={key:e.translationKey,message:e.message};$('error').textContent=e.message;$('error').hidden=false;}}
   document.querySelectorAll('[data-language-choice]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.languageChoice)));
   $('question-list').addEventListener('click',event=>{
     const button=event.target.closest('button[data-action]');if(!button||!$('question-list').contains(button))return;
@@ -732,7 +890,15 @@ function setLanguage(value){
     else if(button.dataset.action==='image')showSourceImages(q);
   });
   $('show-results-button').addEventListener('click',()=>showResults(true));
-  $('subject-select').addEventListener('change',()=>refreshTopics());$('topic-select').addEventListener('change',()=>updateAvailable());$('count-select').addEventListener('change',()=>updateAvailable());$('start-button').addEventListener('click',()=>requestSession(readControls()));$('review-button').addEventListener('click',reviewAnswers);$('restart-button').addEventListener('click',()=>createSession(state.config));
+  $('quick-results').addEventListener('click',()=>showResults(true));
+  $('subject-select').addEventListener('change',()=>chooseSubject($('subject-select').value));
+  $('topic-select').addEventListener('change',()=>{$('count-select').value='all';showSelection(readControls());});
+  $('count-select').addEventListener('change',()=>showSelection(readControls()));
+  $('subject-tabs').addEventListener('click',event=>{const button=event.target.closest('[data-subject-choice]');if(button&&$('subject-tabs').contains(button))chooseSubject(button.dataset.subjectChoice);});
+  $('jump-select').addEventListener('change',()=>{const section=$($('jump-select').value);if(section){section.scrollIntoView({block:'start'});section.querySelector('h3,h4')?.focus({preventScroll:true});}$('jump-select').value='_';});
+  $('start-button').addEventListener('click',()=>requestSession(readControls()));
+  $('review-button').addEventListener('click',reviewAnswers);
+  $('restart-button').addEventListener('click',()=>createSession(state.config));
   $('cancel-reset').addEventListener('click',()=>{pendingConfig=null;$('restart-dialog').close();syncControls();setLive('resumed');});$('confirm-reset').addEventListener('click',()=>{const config=pendingConfig;pendingConfig=null;$('restart-dialog').close();if(config)createSession(config);});$('restart-dialog').addEventListener('cancel',()=>{pendingConfig=null;syncControls();});
   $('image-close').addEventListener('click',()=>{$('image-dialog').close();$('image-full').replaceChildren();});
   applyLanguage();
@@ -740,7 +906,7 @@ function setLanguage(value){
   const modelContext=document.modelContext;
   if(modelContext&&typeof modelContext.registerTool==='function'){
     const lifecycle=new AbortController();const register=tool=>{try{Promise.resolve(modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch(_){}};
-    register({name:'read_tet_practice',title:'Read TET practice',description:'Read the current practice selection and score. All selected questions are displayed together in a scrolling list. The bank contains all 2,700 Paper 2A Maths and Science questions with original diagrams and source answer keys. Some questions are images and must be read visually. Every question has a study hint, visible on request before answering and automatically after answering. Correct answers are returned only after the learner has answered the current question.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({...currentSnapshot(),subjects:SUBJECTS.map(s=>({id:s.id,label:s.label,questions:BANK.filter(q=>q.subject===s.id).length}))})});
+    register({name:'read_tet_practice',title:'Read TET practice',description:'Read the current practice selection and score. All selected questions are displayed together in compact scrolling cards, grouped by subject and the original question ranges. The bank contains all 2,700 Paper 2A Maths and Science questions with original diagrams and source answer keys. Some questions are images and must be read visually. Every question has a study hint, visible on request before answering and automatically after answering. Correct answers are returned only after the learner has answered the current question.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({...currentSnapshot(),subjects:SUBJECTS.map(s=>({id:s.id,label:s.label,questions:BANK.filter(q=>q.subject===s.id).length}))})});
     register({name:'start_tet_practice',title:'Start TET practice',description:'Start a new TET practice session and reset the current session score. Use replaceCurrent=true only when the learner requests replacing an unfinished session with recorded answers.',inputSchema:{type:'object',properties:{subject:{type:'string',enum:['all',...SUBJECTS.map(s=>s.id)]},count:{type:'string',enum:['10','20','30','all']},replaceCurrent:{type:'boolean'}},required:['subject','count'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||typeof input!=='object')throw new Error('Invalid input.');const config={subject:input.subject,topic:'all',count:input.count};validateConfig(config);if(state.answers.size&&score().answered<state.questions.length&&input.replaceCurrent!==true)throw new Error('Starting a new session would reset recorded answers. Ask the learner before replacing it.');return createSession(config);}});
     register({name:'answer_tet_question',title:'Answer TET question',description:'Record an answer for any question in the current scrolling practice, then update that question with the correct answer, study hint and score. The first answer for each question is final.',inputSchema:{type:'object',properties:{questionId:{type:'integer'},option:{type:'integer',minimum:1,maximum:4}},required:['questionId','option'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||!Number.isInteger(input.questionId)||!questionFor(input.questionId))throw new Error('This question is not in the current practice session.');if(!Number.isInteger(input.option)||input.option<1||input.option>4)throw new Error('Option must be from 1 to 4.');if(!$('summary').hidden)throw new Error('Practice is complete. Start a new session to answer.');return selectAnswer(input.option-1,input.questionId);}});
     register({name:'navigate_tet_practice',title:'Navigate TET practice',description:'Scroll to the next or previous question in the practice list. All questions remain displayed, and answering is optional before navigation.',inputSchema:{type:'object',properties:{direction:{type:'string',enum:['next','previous']}},required:['direction'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>navigateQuestion(input?.direction)});
