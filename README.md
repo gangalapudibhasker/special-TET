@@ -1,60 +1,57 @@
-# టెట్ పేపర్ 2A · మ్యాథ్స్ & సైన్స్
+# AP Special TET — Scroll Practice
 
-**గంగలపూడి భాస్కర్ రెడ్డి**
+**గంగలపూడి భాస్కర్ రెడ్డి · Gangalapudi Bhasker Reddy**
 
-## రూపకల్పన
+## Files to upload
 
-Sky Blue, Orchid, Soft Gold రంగుల గ్రేడియెంట్ నేపథ్యం, 3D గోళాలు మరియు ఘనాలు, పైకి లేచిన కార్డులు, నొక్కినప్పుడు దిగే బటన్లు ఉన్నాయి. మొబైల్ తెరలకు అనుగుణంగా రూపకల్పన మారుతుంది. పరికరంలోని reduced-motion ఎంపికను గౌరవిస్తుంది. అన్ని ఎఫెక్ట్‌లు HTMLలోని CSSతోనే పనిచేస్తాయి; వేరే చిత్రాలు లేదా లైబ్రరీలు అవసరం లేదు.
+- `index.html` — the complete practice application.
+- `.nojekyll` — static GitHub Pages marker.
+- `README.md` — these instructions.
 
-## ఫైళ్లు
+Extract the ZIP first. Upload its contents directly to your repository root, so that `index.html` is in the root rather than inside another folder.
 
-- `index.html` — పూర్తి ప్రాక్టీస్ సైట్. ప్రశ్నలు, చిత్రాలు, సమాధాన కీలు, CSS, JavaScript అన్నీ ఈ ఒక్క ఫైల్‌లో ఉన్నాయి.
-- `.nojekyll` — GitHub Pages ఈ ఫైళ్లను స్టాటిక్ సైట్‌గా ప్రచురించడానికి.
-- `README.md` — డిప్లాయ్ సూచనలు.
+## Updating your existing website
 
-## GitHub Pages‌లో డిప్లాయ్ చేయడం
+Replace the old `index.html` with this new `index.html` and commit the change. Your current GitHub Pages publishing settings can continue to use the same branch and folder.
 
-1. ZIP ఫైల్‌ను విప్పండి.
-2. GitHubలో కొత్త repository సృష్టించండి. పేరు ఉదాహరణ: `bhasker-tet-paper2a`.
-3. ZIPలోని `index.html`, `.nojekyll`, `README.md` ఫైళ్లను repository **root**లో upload చేసి `main` branchకు commit చేయండి. `index.html` ఒక ఉపఫోల్డర్‌లో ఉండకూడదు; ZIP ఫైల్‌ను మాత్రమే upload చేయకండి.
-4. Repositoryలో **Settings → Pages** తెరవండి.
-5. **Build and deployment → Source → Deploy from a branch** ఎంచుకోండి.
-6. **Branch: main**, **Folder: /(root)** ఎంచుకుని **Save** నొక్కండి. మీ repositoryలో branch పేరు వేరైతే ఫైళ్లు ఉన్న branchను ఎంచుకోండి.
-7. Deployment పూర్తయ్యాక Pages పేజీలో కనిపించే సైట్ లింక్‌ను తెరవండి.
+**తెలుగు:** ZIPను extract చేయండి. అందులోని ఫైళ్ళను మీ GitHub repository మొదటి స్థాయి (root)లో upload చేయండి. పాత `index.html` ఫైల్ స్థానంలో కొత్త `index.html` ఫైల్‌ను పెట్టి commit చేయండి.
 
-GitHub Freeలో Pages కోసం public repository ఉపయోగించాలి. GitHub Pages సైట్ ఇంటర్నెట్‌లో అందరికీ కనిపిస్తుంది. Repository ఎంపికను మీ అవసరానికి అనుగుణంగా చేయండి.
+## Enabling GitHub Pages for a new repository
 
-అధికారిక సూచనలు: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+1. Upload the files and commit them to `main` (or your chosen publishing branch).
+2. Open **Settings → Pages**.
+3. Under **Build and deployment**, select **Deploy from a branch**.
+4. Choose your publishing branch and **/(root)**, then click **Save**.
+5. Open the website address shown by GitHub after publication.
 
-## ప్రశ్నల సంఖ్య
+Official instructions: [Configure a GitHub Pages publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
-| విభాగం | ప్రశ్నలు |
+## Practice
+
+- All 2,700 questions appear in one continuous scrolling list by default.
+- Select a subject, question group or practice size, then choose **Start practice**.
+- Every question in your selected set is displayed together. Answer in any order.
+- Choosing an option immediately shows whether it is correct, highlights the correct option, shows that question’s study hint, and updates the score.
+- Each question records its first answer. Other questions remain available immediately.
+- Use **Show hint** before answering whenever you need help.
+- English is the default. The home-page controls offer **English**, **Telugu** and **Both**.
+- Language changes retain your selected answers, score and opened hints.
+- Tap a question diagram to enlarge it.
+- After you complete the selected set, the results appear with the questions still visible.
+- The app uses an embedded question bank and images. No npm installation, server, API key or build step is required.
+
+## Question counts
+
+| Subject | Questions |
 | --- | ---: |
 | CDP | 630 |
-| తెలుగు | 630 |
+| Telugu | 630 |
 | English | 720 |
 | Maths | 240 |
 | PS | 240 |
 | BS | 240 |
-| మొత్తం | 2,700 |
+| **Total** | **2,700** |
 
-## ఉపయోగించడం
+## Validation
 
-- Home పేజీ headerలోని **English**, **Telugu / తెలుగు**, **Both / రెండూ** బటన్లతో భాషను ఎంచుకోండి. ప్రతి సారి పేజీ తెరిచినప్పుడు English భాషతో ప్రారంభమవుతుంది.
-- English లేదా తెలుగును ఎంచుకుంటే ద్విభాషా ప్రశ్నలు, సమాధాన ఎంపికలు ఆ భాషలో కనిపిస్తాయి. Both ఎంచుకుంటే రెండు భాషలు కనిపిస్తాయి.
-- ఒకే భాషలో ఉన్న తెలుగు/English భాషా ప్రశ్నలు, చిత్రాల్లోని పాఠ్యం అసలు రూపంలోనే ఉంటాయి. అసలు ప్రశ్నలు, ఎంపికలు, చిత్రాలు, సమాధాన కీలు మార్చలేదు.
-- భాష మార్చినప్పుడు ప్రస్తుత ప్రశ్న, మీ సమాధానాలు, స్కోరు మారవు. పేజీని refresh చేసినప్పుడు మళ్లీ English భాషతో ప్రారంభమవుతుంది.
-- అన్ని విభాగాలు లేదా ఒక విభాగాన్ని ఎంచుకోండి.
-- అవసరమైతే 30 ప్రశ్నల సమూహాన్ని ఎంచుకోండి.
-- 10, 20, 30 లేదా అన్ని ప్రశ్నలతో అభ్యాసం ప్రారంభించండి.
-- సమాధానాన్ని నొక్కగానే సరైన ఎంపిక, స్కోరు కనిపిస్తాయి. మొదటి సమాధానమే నమోదవుతుంది.
-- సమాధానం ఎంచుకోవడానికి ముందు ప్రతి ప్రశ్నకు **Show hint / సూచన చూడండి** బటన్ ఉంది. అవసరమైనప్పుడు సూచన తెరవండి; **Hide hint / సూచన దాచండి** నొక్కి మూసివేయండి.
-- సమాధానం ఎంచుకున్న వెంటనే సరైన ఎంపిక క్రింద ఆ ప్రశ్నకు సంబంధించిన అభ్యాస సూచన స్వయంగా కనిపిస్తుంది. సమాధానాల సమీక్షలో కూడా ప్రతి ప్రశ్నకు సూచన కనిపిస్తుంది.
-- సూచనలు English, తెలుగు లేదా Both ఎంపికకు అనుగుణంగా కనిపిస్తాయి. సూచన చూసినా స్కోరు మారదు.
-- ప్రశ్నల మధ్య వెనక్కి/ముందుకు వెళ్లినప్పుడు తెరిచిన సూచన గుర్తుంటుంది. కొత్త అభ్యాసం ప్రారంభించినప్పుడు సూచనలన్నీ మళ్లీ మూసివేయబడతాయి.
-- చిత్రాన్ని నొక్కి పెద్దగా చూడవచ్చు.
-- అభ్యాసం పూర్తయ్యాక సమాధానాలను సమీక్షించవచ్చు.
-
-ప్రతి ప్రశ్నకు English, తెలుగు భాషల్లో అభ్యాస సూచన అందుబాటులో ఉంది. అభ్యాసం స్కోరు తెరిచిన పేజీలోనే ఉంటుంది; పేజీని refresh చేస్తే అభ్యాసం మళ్లీ ప్రారంభమవుతుంది.
-
-ఈ సైట్‌కు build command, Node.js, API key లేదా వేరే asset ఫోల్డర్ అవసరం లేదు. `index.html` ఫైల్‌ను బ్రౌజర్‌లో నేరుగా తెరిచి కూడా ఉపయోగించవచ్చు.
+The question-bank and hint payloads are retained byte for byte. JavaScript syntax and programmatic DOM interaction checks cover the scrolling list, answers in any order, immediate question-specific feedback, score locking, filters, language changes, diagrams, results and restarting. A visual browser check was unavailable in the build environment.

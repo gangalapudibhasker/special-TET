@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173e59">
-  <meta name="description" content="Gangalapudi Bhasker Reddy — TET Paper 2A Maths and Science practice. 2,700 original questions, instant answer feedback and scoring.">
+  <meta name="description" content="Gangalapudi Bhasker Reddy — TET Paper 2A Maths and Science practice. 2,700 original questions, all questions in a scrolling list, instant answer feedback and scoring.">
   <meta name="author" content="గంగలపూడి భాస్కర్ రెడ్డి">
   <title>TET Paper 2A Practice | Gangalapudi Bhasker Reddy</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23266087'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='35' font-weight='700' fill='white'%3E2A%3C/text%3E%3C/svg%3E">
@@ -261,6 +261,37 @@ footer strong{color:#285976}
 .feedback-hint .explanation p+p{margin-top:12px;padding-top:12px;border-top:1px solid #e8d9b7}
 @media(max-width:720px){.feedback-hint{padding:13px 12px}.feedback-hint h4{font-size:.94rem}}
 </style>
+
+  <style id="scroll-practice-theme">
+    .practice-column,.practice-list{min-width:0;width:100%}
+    .question-list{display:grid;gap:22px}
+    .list-intro{padding:19px 23px;margin-bottom:20px;background:#ffffffed;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+    .list-intro h2{font-size:1.3rem;color:var(--navy);margin-bottom:8px}
+    .list-intro p{color:var(--muted);font-size:.93rem;margin-top:7px}
+    .list-intro #list-count{font-weight:700;color:var(--navy)}
+    .list-intro .first-choice-note{font-size:.82rem}
+    .practice-question,.practice-question:hover{transform:none;scroll-margin-top:24px;content-visibility:auto;contain-intrinsic-size:auto 680px}
+    .practice-question .hint-panel h4,.practice-question .feedback h4{margin:0 0 7px;font-size:1rem}
+    .practice-question .feedback h4{color:var(--green)}
+    .practice-question .feedback.incorrect h4{color:var(--red)}
+    .practice-question .feedback-hint h5{margin:0 0 8px;font-size:.95rem;color:#76521c}
+    .practice-question .answers{scroll-margin-top:130px}
+    .side{position:sticky;top:16px;align-self:start;z-index:3}
+    .show-results-button{width:100%;margin-top:14px}
+    .practice-column>.summary{margin-top:22px}
+    #scroll-title{scroll-margin-top:175px}
+    @media(max-width:720px){
+      .practice-column{order:1;width:100%}
+      .question-list{gap:16px}
+      .list-intro{padding:16px;margin-bottom:16px}
+      .list-intro h2{font-size:1.1rem}
+      .side{position:sticky;top:6px;align-self:stretch;z-index:5}
+      .side .score-panel{background:#fffffffa;box-shadow:0 8px 20px #19284e20}
+      .practice-question{scroll-margin-top:190px;contain-intrinsic-size:auto 800px}
+      .show-results-button{grid-column:1/-1;margin-top:6px}
+    }
+    @media(prefers-reduced-motion:reduce){.practice-question{scroll-behavior:auto}}
+  </style>
 </head>
 <body>
   <div class="ambient-scene" aria-hidden="true">
@@ -271,7 +302,7 @@ footer strong{color:#285976}
     <span class="ambient-cube ambient-cube--small"><span class="cube-face cube-face--front"></span><span class="cube-face cube-face--right"></span><span class="cube-face cube-face--top"></span></span>
   </div>
 
-  <a class="skip" href="#question-heading" data-i18n="skip">Go to the question</a>
+  <a class="skip" href="#scroll-title" data-i18n="skip">Go to the question</a>
   <header class="top"><div class="top-inner"><div class="brand-mark" aria-hidden="true">2A</div><div><h1 data-i18n="heading">TET Paper 2A · Maths &amp; Science</h1><p class="owner" data-i18n="owner">Gangalapudi Bhasker Reddy</p></div><span class="paper-label" data-i18n="practice">Practice</span></div>
     <div class="home-language-wrap">
     <section class="language-bar" id="home-language-controls" data-i18n-aria="language" aria-label="Language">
@@ -300,28 +331,16 @@ footer strong{color:#285976}
     </section>
     <p id="error" class="error-message" role="alert" hidden></p>
     <div class="layout">
-      <section class="quiz" id="quiz-card" data-i18n-aria="questions" aria-label="Questions">
-        <div class="review-banner" id="review-banner" data-i18n="review" hidden>Answer review</div>
-        <div class="question-meta"><span class="question-number" id="question-number"></span><span class="chip" id="question-subject"></span><span class="topic-tag" id="question-topic"></span></div>
-        <div class="question-content">
-          <div class="question" id="question-heading" role="heading" aria-level="2" tabindex="-1"></div>
-          <p class="instruction" id="answer-instruction">Choose an answer to see the correct answer immediately.</p>
-          <div class="hint-wrap" id="hint-wrap">
-            <button class="hint-button" id="hint-button" type="button" aria-expanded="false" aria-controls="hint-panel">
-              <svg class="hint-icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6M10 21h4M8.3 14.7A6 6 0 1 1 15.7 14.7C14.8 15.5 15 17 15 18H9c0-1 .2-2.5-.7-3.3Z"/><path d="m10 9 2 2 2-2M12 11v4"/></svg>
-              <span id="hint-button-label">Show hint</span>
-              <span class="hint-chevron" aria-hidden="true"></span>
-            </button>
-            <section class="hint-panel" id="hint-panel" aria-labelledby="hint-title" hidden>
-              <h3 id="hint-title" data-i18n="hintTitle">Study hint</h3>
-              <div id="hint-content" aria-live="polite" aria-atomic="true"></div>
-              <p class="hint-note" id="hint-note" data-i18n="hintHelp">Hints guide your practice and do not affect your score.</p>
-            </section>
-          </div>
-          <div class="answers" id="answers" role="group" aria-labelledby="question-heading"></div>
-          <section class="feedback" id="feedback" aria-labelledby="feedback-title" role="status" aria-live="polite" hidden><h3 id="feedback-title"></h3><p class="correct-answer" id="correct-answer"></p><div class="feedback-hint" id="answer-hint" role="group" aria-labelledby="answer-hint-title"><h4 id="answer-hint-title" data-i18n="hintTitle">Study hint</h4><div class="explanation" id="explanation"></div></div></section>
+      <div class="practice-column">
+      <section class="practice-list" id="quiz-card" aria-labelledby="scroll-title">
+        <div class="list-intro">
+          <h2 id="scroll-title" data-i18n="scrollPractice" tabindex="-1">Scroll &amp; practice</h2>
+          <p id="list-count" role="status">2,700 questions shown · answer in any order</p>
+          <p data-i18n="scrollHelp">All questions in your selected practice are shown below. Scroll and answer any question to see immediate feedback.</p>
+          <p class="first-choice-note" data-i18n="firstChoice">Only your first choice for each question is recorded.</p>
         </div>
-        <nav class="question-nav" data-i18n-aria="navigation" aria-label="Question navigation"><button class="secondary" id="previous-button" data-i18n="previous" type="button">Previous question</button><span class="nav-help" id="nav-help"></span><button class="primary" id="next-button" type="button">Next question</button></nav>
+        <div class="review-banner" id="review-banner" data-i18n="review" hidden>Answer review</div>
+        <div class="question-list" id="question-list"></div>
       </section>
       <section class="summary" id="summary" aria-labelledby="summary-heading" hidden>
         <p class="summary-label" data-i18n="resultLabel">Results for this practice</p><h2 id="summary-heading" data-i18n="complete" tabindex="-1">Practice complete</h2>
@@ -330,8 +349,9 @@ footer strong{color:#285976}
         <table class="subject-results"><caption class="sr-only" data-i18n="subjectResults">Results by subject</caption><thead><tr><th scope="col" data-i18n="subject">Subject</th><th scope="col" data-i18n="correct">Correct</th><th scope="col" data-i18n="total">Total</th></tr></thead><tbody id="result-subjects"></tbody></table>
         <div class="summary-actions"><button class="secondary" id="review-button" data-i18n="viewAnswers" type="button">Review answers</button><button class="primary" id="restart-button" data-i18n="again" type="button">Practice again</button></div>
       </section>
+      </div>
       <aside class="side" data-i18n-aria="scoreDetails" aria-label="Score and question details">
-        <section class="score-panel" aria-labelledby="score-title"><h2 id="score-title" data-i18n="currentScore">Current score</h2><div class="score-main"><strong class="score-number" id="score-value">0</strong><span class="score-denom" id="score-denom">/ 2700</span></div><p class="score-caption" id="score-caption">1 mark for each correct answer</p><div class="score-stats"><div class="stat good"><span data-i18n="correct">Correct</span><strong id="correct-count">0</strong></div><div class="stat bad"><span data-i18n="wrong">Incorrect</span><strong id="wrong-count">0</strong></div></div><div class="progress-block"><div class="progress-title"><span data-i18n="progress">Answered</span><span id="progress-label">0 / 2700</span></div><progress id="progress" data-i18n-aria="progressLabel" value="0" max="2700" aria-label="Answered questions"></progress></div></section>
+        <section class="score-panel" aria-labelledby="score-title"><h2 id="score-title" data-i18n="currentScore">Current score</h2><div class="score-main"><strong class="score-number" id="score-value">0</strong><span class="score-denom" id="score-denom">/ 2700</span></div><p class="score-caption" id="score-caption">1 mark for each correct answer</p><div class="score-stats"><div class="stat good"><span data-i18n="correct">Correct</span><strong id="correct-count">0</strong></div><div class="stat bad"><span data-i18n="wrong">Incorrect</span><strong id="wrong-count">0</strong></div></div><div class="progress-block"><div class="progress-title"><span data-i18n="progress">Answered</span><span id="progress-label">0 / 2700</span></div><progress id="progress" data-i18n-aria="progressLabel" value="0" max="2700" aria-label="Answered questions"></progress></div><button class="secondary show-results-button" id="show-results-button" data-i18n="results" type="button" disabled hidden>View results</button></section>
         <section class="scope-panel" aria-labelledby="bank-title"><h2 id="bank-title" data-i18n="bankTitle">Original question bank</h2><ul class="subject-list" id="subject-list"></ul><p class="source-note" data-i18n="bankNote">2,700 questions with original answer keys and study hints for every question.</p></section>
       </aside>
     </div>
@@ -352,7 +372,10 @@ const TEXT = {
   owner:['Gangalapudi Bhasker Reddy','గంగలపూడి భాస్కర్ రెడ్డి'],
   heading:['TET Paper 2A · Maths & Science','టెట్ పేపర్ 2A · మ్యాథ్స్ & సైన్స్'],
   practice:['Practice','అభ్యాసం'],
-  skip:['Go to the question','ప్రశ్నకు వెళ్ళండి'],
+  skip:['Go to the questions','ప్రశ్నల దగ్గరకు వెళ్ళండి'],
+  scrollPractice:['Scroll & practice','స్క్రోల్ చేసి అభ్యాసం చేయండి'],
+  scrollHelp:['All questions in your selected practice are shown below. Scroll and answer any question to see immediate feedback.','మీరు ఎంచుకున్న అభ్యాసంలోని అన్ని ప్రశ్నలు క్రింద ఉన్నాయి. స్క్రోల్ చేస్తూ ఏ ప్రశ్నకైనా సమాధానం ఎంచుకుంటే వెంటనే ఫలితం కనిపిస్తుంది.'],
+  visibleQuestions:['{n} questions shown · answer in any order','{n} ప్రశ్నలు కనిపిస్తున్నాయి · ఏ క్రమంలోనైనా సమాధానం ఇవ్వండి'],
   bankSummary:['2,700 original questions · Paper 2A Maths & Science.','2,700 అసలు ప్రశ్నలు · పేపర్ 2A మ్యాథ్స్ & సైన్స్.'],
   languageHelp:['Questions available in one language and text inside images remain in their original form.','ఒకే భాషలో ఉన్న ప్రశ్నలు, చిత్రాల్లోని పాఠ్యం వాటి అసలు రూపంలోనే ఉంటాయి.'],
   settings:['Practice settings','అభ్యాసం ఎంపిక'],
@@ -501,8 +524,8 @@ function applyLanguage(){
   for(const option of $('count-select').options)option.textContent=t(option.value==='all'?'allQuestions':'questionCount',{n:option.value});
   $('live-status').textContent=t(liveMessage.key,liveMessage.values);
   if(visibleError)$('error').textContent=visibleError.key?t(visibleError.key):visibleError.message;
-  if(state.questions.length){if($('summary').hidden)renderQuestion();else showResults(false);updateScore();}
-  if($('image-dialog').open)fillSourceImages(state.questions[state.index]);
+  if(state.questions.length){renderQuestion();if(!$('summary').hidden)showResults(false);updateScore();}
+  if($('image-dialog').open){const q=questionFor(state.imageQuestionId);if(q)fillSourceImages(q);}
 }
 function setLanguage(value){
   if(!['en','te','both'].includes(value))throw new Error('Choose English, Telugu, or Both.');
@@ -531,7 +554,7 @@ function setLanguage(value){
     const matched=matchingQuestions(config);if(!matched.length)throw practiceError('noQuestions');return matched;
   }
   function score(){const answered=state.answers.size;let correct=0;for(const q of state.questions)if(state.answers.get(q.id)===q.answer)correct++;return{correct,wrong:answered-correct,answered,total:state.questions.length,percent:state.questions.length?Math.round(100*correct/state.questions.length):0};}
-  function currentSnapshot(){const q=state.questions[state.index];return{language,config:{...state.config},mode:state.review?'review':$('summary').hidden?'practice':'results',question:q?{id:q.id,number:state.index+1,subject:q.subject,topic:q.topic,sourceNumber:q.sourceNumber,hasImages:q.pictures.length>0,imageCount:q.pictures.length,text:sourceView(q.questionHTML,q.question).text,options:q.options.map((text,i)=>({option:i+1,text:sourceView(q.optionsHTML[i],text).text})),selected:state.answers.has(q.id)?state.answers.get(q.id)+1:null,hintVisible:state.hintsShown.has(q.id)||state.answers.has(q.id),...((state.hintsShown.has(q.id)||state.answers.has(q.id))?{hint:hintText(q)}:{}),...(state.answers.has(q.id)?{correctOption:q.answer+1}:{})}:null,score:score(),contentType:'source_question_bank'};}
+  function currentSnapshot(){const q=state.questions[state.index];return{language,displayMode:'scroll',renderedQuestions:state.questions.length,config:{...state.config},mode:state.review?'review':$('summary').hidden?'practice':'results',question:q?{id:q.id,number:state.index+1,subject:q.subject,topic:q.topic,sourceNumber:q.sourceNumber,hasImages:q.pictures.length>0,imageCount:q.pictures.length,text:sourceView(q.questionHTML,q.question).text,options:q.options.map((text,i)=>({option:i+1,text:sourceView(q.optionsHTML[i],text).text})),selected:state.answers.has(q.id)?state.answers.get(q.id)+1:null,hintVisible:state.hintsShown.has(q.id)||state.answers.has(q.id),...((state.hintsShown.has(q.id)||state.answers.has(q.id))?{hint:hintText(q)}:{}),...(state.answers.has(q.id)?{correctOption:q.answer+1}:{})}:null,score:score(),contentType:'source_question_bank'};}
   function refreshTopics(reset=true,quiet=false){
     const old=reset?'all':$('topic-select').value;const subject=$('subject-select').value;const topics=[...new Set(BANK.filter(q=>subject==='all'||q.subject===subject).map(q=>q.topic))];
     $('topic-select').replaceChildren(new Option(t('allGroups'),'all'));
@@ -551,11 +574,10 @@ function setLanguage(value){
     setLive('started',{subjectId:config.subject,subject:TEXT[config.subject==='all'?'allSubjects':'subject_'+config.subject],n});
     renderQuestion(focus);updateScore();return currentSnapshot();
   }
-  function updateScore(){const s=score();$('score-value').textContent=s.correct;$('score-denom').textContent=`/ ${s.total}`;$('correct-count').textContent=s.correct;$('wrong-count').textContent=s.wrong;$('progress-label').textContent=`${s.answered} / ${s.total}`;$('progress').max=s.total;$('progress').value=s.answered;$('progress').setAttribute('aria-valuetext',t('progressValue',{n:s.answered,total:s.total}));$('score-caption').textContent=s.answered?t('percentage',{n:s.percent}):t('oneMark');}
+  function updateScore(){const s=score();$('score-value').textContent=s.correct;$('score-denom').textContent=`/ ${s.total}`;$('correct-count').textContent=s.correct;$('wrong-count').textContent=s.wrong;$('progress-label').textContent=`${s.answered} / ${s.total}`;$('progress').max=s.total;$('progress').value=s.answered;$('progress').setAttribute('aria-valuetext',t('progressValue',{n:s.answered,total:s.total}));$('score-caption').textContent=s.answered?t('percentage',{n:s.percent}):t('oneMark');const complete=s.total>0&&s.answered===s.total;$('show-results-button').disabled=!complete;$('show-results-button').hidden=!complete;}
   function sourceImage(picture,index,sourceNumber){const image=document.createElement('img');image.src=picture.src;image.width=picture.width;image.height=picture.height;image.alt=t('imageAlt',{n:sourceNumber,i:index+1});return image;}
   function fillSourceImages(q){$('image-title').textContent=`${subjectLabel(q.subject)} · ${t('originalNumber',{n:q.sourceNumber})}`;$('image-full').replaceChildren();q.pictures.forEach((picture,i)=>$('image-full').append(sourceImage(picture,i,q.sourceNumber)));}
-  function showSourceImages(q){fillSourceImages(q);$('image-dialog').showModal();}
-  function renderSourceQuestion(q){$('question-heading').innerHTML=sourceView(q.questionHTML,q.question).html;if(q.pictures.length){q.pictures.forEach((picture,i)=>{const button=document.createElement('button');button.type='button';button.className='source-picture';button.setAttribute('aria-label',t('imageZoom',{n:q.sourceNumber,i:i+1}));button.append(sourceImage(picture,i,q.sourceNumber));button.addEventListener('click',()=>showSourceImages(q));$('question-heading').append(button);});const help=document.createElement('p');help.className='picture-help';help.textContent=t('imageHelp');$('question-heading').append(help);}}
+  function showSourceImages(q){state.imageQuestionId=q.id;fillSourceImages(q);$('image-dialog').showModal();}
   function hintPair(q){return HINTS.templates[HINTS.assignments[`${q.subject}:${q.sourceNumber}`]];}
   function hintText(q){const pair=hintPair(q);return language==='en'?pair[0]:language==='te'?pair[1]:pair.join('\n\n');}
   function renderHintContent(target,q){
@@ -568,59 +590,149 @@ function setLanguage(value){
       target.append(paragraph);
     }
   }
-  function renderHint(q){
-    const shown=state.hintsShown.has(q.id);
-    $('hint-wrap').hidden=state.answers.has(q.id);
-    $('hint-button').setAttribute('aria-expanded',String(shown));
-    $('hint-button').classList.toggle('is-open',shown);
-    $('hint-button-label').textContent=t(shown?'hideHint':'showHint');
-    $('hint-panel').hidden=!shown;
-    $('hint-title').textContent=t('hintTitle');
-    $('hint-content').replaceChildren();
-    if(shown)renderHintContent($('hint-content'),q);
+  function cardFor(questionId){return $(`practice-question-${questionId}`);}
+  function questionFor(questionId){return state.questions.find(q=>q.id===questionId);}
+  function part(card,name){return card.querySelector(`[data-part="${name}"]`);}
+  function renderHint(q,card=cardFor(q.id)){
+    if(!card)return;
+    const shown=state.hintsShown.has(q.id),button=part(card,'hint-button');
+    part(card,'hint-wrap').hidden=state.answers.has(q.id);
+    button.setAttribute('aria-expanded',String(shown));
+    button.classList.toggle('is-open',shown);
+    part(card,'hint-button-label').textContent=t(shown?'hideHint':'showHint');
+    part(card,'hint-panel').hidden=!shown;
+    part(card,'hint-content').replaceChildren();
+    if(shown)renderHintContent(part(card,'hint-content'),q);
   }
-  function toggleHint(){
-    const q=state.questions[state.index];if(!q)return;
+  function toggleHint(questionId=state.questions[state.index]?.id){
+    const q=questionFor(questionId);if(!q)return;
+    state.index=state.questions.indexOf(q);
     if(state.hintsShown.has(q.id))state.hintsShown.delete(q.id);else state.hintsShown.add(q.id);
-    renderHint(q);
+    renderHint(q);return currentSnapshot();
+  }
+  function renderCardAnswer(card,q){
+    const answered=state.answers.has(q.id),selected=state.answers.get(q.id);
+    card.classList.toggle('is-answered',answered);
+    card.dataset.answered=String(answered);
+    for(const button of card.querySelectorAll('.answer')){
+      const option=Number(button.dataset.option);
+      button.disabled=answered;
+      button.setAttribute('aria-pressed',String(answered&&option===selected));
+      button.classList.toggle('correct',answered&&option===q.answer);
+      button.classList.toggle('wrong',answered&&option===selected&&option!==q.answer);
+      const flag=button.querySelector('.answer-flag');
+      flag.hidden=!(answered&&(option===q.answer||option===selected));
+      flag.textContent=answered&&option===q.answer?t('correctFlag'):t('yourChoice');
+    }
+    part(card,'instruction').textContent=t(answered?'recorded':'immediate');
+    const feedback=part(card,'feedback');feedback.hidden=!answered;
+    if(answered){
+      feedback.classList.toggle('incorrect',selected!==q.answer);
+      part(card,'feedback-title').textContent=t(selected===q.answer?'correctFeedback':'wrongFeedback');
+      const correct=part(card,'correct-answer');correct.textContent=t('correctOption',{n:q.answer+1});
+      const answer=document.createElement('span');answer.className='answer-text';
+      const view=sourceView(q.optionsHTML[q.answer]||'',q.options[q.answer]);
+      if(view.html)answer.innerHTML=view.html;else answer.textContent=view.text;
+      correct.append(answer);renderHintContent(part(card,'explanation'),q);
+    }
+    renderHint(q,card);
+  }
+  function buildQuestionCard(q,index){
+    const card=document.createElement('article');
+    card.className='quiz practice-question';card.id=`practice-question-${q.id}`;card.dataset.questionId=String(q.id);
+    card.setAttribute('aria-labelledby',`question-heading-${q.id}`);
+    card.innerHTML=`<div class="question-meta"><span class="question-number" data-part="number"></span><span class="chip" data-part="subject"></span><span class="topic-tag" data-part="topic"></span></div>
+      <div class="question-content">
+        <div class="question" id="question-heading-${q.id}" data-part="heading" role="heading" aria-level="3" tabindex="-1"></div>
+        <p class="instruction" data-part="instruction"></p>
+        <div class="hint-wrap" data-part="hint-wrap">
+          <button class="hint-button" data-part="hint-button" data-action="hint" type="button" aria-expanded="false" aria-controls="hint-panel-${q.id}">
+            <svg class="hint-icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18h6M10 21h4M8.3 14.7A6 6 0 1 1 15.7 14.7C14.8 15.5 15 17 15 18H9c0-1 .2-2.5-.7-3.3Z"/><path d="m10 9 2 2 2-2M12 11v4"/></svg>
+            <span data-part="hint-button-label"></span><span class="hint-chevron" aria-hidden="true"></span>
+          </button>
+          <section class="hint-panel" id="hint-panel-${q.id}" data-part="hint-panel" aria-labelledby="hint-title-${q.id}" hidden>
+            <h4 id="hint-title-${q.id}" data-part="hint-title"></h4><div data-part="hint-content" aria-live="polite" aria-atomic="true"></div><p class="hint-note" data-part="hint-note"></p>
+          </section>
+        </div>
+        <div class="answers" data-part="answers" role="group" aria-labelledby="question-heading-${q.id}"></div>
+        <section class="feedback" data-part="feedback" aria-labelledby="feedback-title-${q.id}" role="status" aria-live="polite" tabindex="-1" hidden>
+          <h4 id="feedback-title-${q.id}" data-part="feedback-title"></h4><p class="correct-answer" data-part="correct-answer"></p>
+          <div class="feedback-hint" role="group" aria-labelledby="answer-hint-title-${q.id}"><h5 id="answer-hint-title-${q.id}" data-part="answer-hint-title"></h5><div class="explanation" data-part="explanation"></div></div>
+        </section>
+      </div>`;
+    part(card,'number').textContent=t('question',{n:index+1,total:state.questions.length});
+    part(card,'subject').textContent=subjectLabel(q.subject);
+    part(card,'topic').textContent=`${t('originalNumber',{n:q.sourceNumber})} · ${topicLabel(q.topic)}`;
+    const heading=part(card,'heading'),view=sourceView(q.questionHTML,q.question);
+    if(view.html)heading.innerHTML=view.html;else heading.textContent=view.text;
+    heading.lang=language==='en'?'en':'te';
+    if(q.pictures.length){
+      for(const [i,picture] of q.pictures.entries()){
+        const button=document.createElement('button');button.type='button';button.className='source-picture';button.dataset.action='image';
+        button.setAttribute('aria-label',t('imageZoom',{n:q.sourceNumber,i:i+1}));
+        const image=sourceImage(picture,i,q.sourceNumber);image.loading='lazy';image.decoding='async';button.append(image);heading.append(button);
+      }
+      const help=document.createElement('p');help.className='picture-help';help.textContent=t('imageHelp');heading.append(help);
+    }
+    part(card,'hint-title').textContent=t('hintTitle');part(card,'answer-hint-title').textContent=t('hintTitle');part(card,'hint-note').textContent=t('hintHelp');
+    const answers=part(card,'answers');answers.lang=language==='en'?'en':'te';
+    for(let i=0;i<q.options.length;i++){
+      const button=document.createElement('button');button.type='button';button.className='answer';button.dataset.action='answer';button.dataset.option=String(i);
+      const option=sourceView(q.optionsHTML[i]||'',q.options[i]);
+      button.setAttribute('aria-label',`${i+1}. ${option.text||t('optionNumber',{n:i+1})}`);
+      const letter=document.createElement('span');letter.className='letter';letter.textContent=String(i+1);letter.setAttribute('aria-hidden','true');
+      const text=document.createElement('span');text.className='answer-text';
+      if(option.html)text.innerHTML=option.html;else text.textContent=option.text||t('option');
+      const flag=document.createElement('span');flag.className='answer-flag';flag.hidden=true;
+      button.append(letter,text,flag);answers.append(button);
+    }
+    card.querySelectorAll('img').forEach(image=>{image.loading='lazy';image.decoding='async';});
+    renderCardAnswer(card,q);return card;
   }
   function renderQuestion(focus=false){
-    const q=state.questions[state.index];if(!q)return;const answered=state.answers.has(q.id),selected=state.answers.get(q.id);
-    $('question-number').textContent=t('question',{n:state.index+1,total:state.questions.length});$('question-subject').textContent=subjectLabel(q.subject);$('question-topic').textContent=`${t('originalNumber',{n:q.sourceNumber})} · ${topicLabel(q.topic)}`;renderSourceQuestion(q);renderHint(q);$('question-heading').lang=language==='en'?'en':'te';$('answers').replaceChildren();
-    for(let i=0;i<q.options.length;i++){
-      const button=document.createElement('button');button.type='button';button.className='answer';button.disabled=answered;button.dataset.option=String(i);button.setAttribute('aria-label',q.optionsHTML[i]?`${i+1}. ${sourceView(q.optionsHTML[i],q.options[i]).text}`:t('optionNumber',{n:i+1}));
-      const letter=document.createElement('span');letter.className='letter';letter.textContent=String(i+1);letter.setAttribute('aria-hidden','true');
-      const text=document.createElement('span');text.className='answer-text';text.innerHTML=sourceView(q.optionsHTML[i]).html||t('option');button.append(letter,text);
-      if(answered&&i===q.answer){button.classList.add('correct');const tag=document.createElement('span');tag.className='answer-flag';tag.textContent=t('correctFlag');button.append(tag);}
-      if(answered&&i===selected&&i!==q.answer){button.classList.add('wrong');const tag=document.createElement('span');tag.className='answer-flag';tag.textContent=t('yourChoice');button.append(tag);}
-      button.addEventListener('click',()=>selectAnswer(i));$('answers').append(button);
-    }
-    $('answers').lang=language==='en'?'en':'te';$('answer-instruction').textContent=t(answered?'recorded':'immediate');$('feedback').hidden=!answered;if(!answered)$('explanation').replaceChildren();
-    if(answered){const correct=selected===q.answer;$('feedback').classList.toggle('incorrect',!correct);$('feedback-title').textContent=t(correct?'correctFeedback':'wrongFeedback');$('correct-answer').textContent=t('correctOption',{n:q.answer+1});if(q.optionsHTML[q.answer]){const content=document.createElement('span');content.className='answer-text';content.innerHTML=sourceView(q.optionsHTML[q.answer],q.options[q.answer]).html;$('correct-answer').append(content);}$('answer-hint-title').textContent=t('hintTitle');renderHintContent($('explanation'),q);}
-    $('previous-button').disabled=state.index===0;$('next-button').disabled=!answered;$('next-button').textContent=t(state.index===state.questions.length-1?'results':'next');$('nav-help').textContent=t(answered?'firstChoice':'answerToContinue');$('review-banner').hidden=!state.review;
-    if(focus)$('question-heading').focus();
+    const fragment=document.createDocumentFragment();
+    state.questions.forEach((q,index)=>fragment.append(buildQuestionCard(q,index)));
+    $('question-list').replaceChildren(fragment);
+    $('list-count').textContent=t('visibleQuestions',{n:state.questions.length});
+    $('review-banner').hidden=!state.review;
+    if(focus)$('scroll-title').focus();
   }
-  function selectAnswer(option){
-    const q=state.questions[state.index];if(!q)throw practiceError('noQuestion');if(!Number.isInteger(option)||option<0||option>=q.options.length)throw practiceError('invalidAnswer');
-    if(state.answers.has(q.id))return currentSnapshot();state.answers.set(q.id,option);renderQuestion();updateScore();$('next-button').focus({preventScroll:true});return currentSnapshot();
+  function selectAnswer(option,questionId=state.questions[state.index]?.id){
+    const q=questionFor(questionId);if(!q)throw practiceError('noQuestion');
+    if(!Number.isInteger(option)||option<0||option>=q.options.length)throw practiceError('invalidAnswer');
+    state.index=state.questions.indexOf(q);
+    if(state.answers.has(q.id))return currentSnapshot();
+    state.answers.set(q.id,option);
+    const card=cardFor(q.id);renderCardAnswer(card,q);updateScore();
+    if(state.answers.size===state.questions.length)showResults(false);
+    part(card,'feedback').focus({preventScroll:true});
+    return currentSnapshot();
   }
   function showResults(focus=true){
     const s=score();if(s.answered<s.total)throw practiceError('finishAll');
-    $('quiz-card').hidden=true;$('summary').hidden=false;$('result-correct').textContent=s.correct;$('result-wrong').textContent=s.wrong;$('result-percent').textContent=`${s.percent}%`;$('summary-message').textContent=t('answeredMessage',{n:s.total});$('result-subjects').replaceChildren();
+    $('quiz-card').hidden=false;$('summary').hidden=false;$('result-correct').textContent=s.correct;$('result-wrong').textContent=s.wrong;$('result-percent').textContent=`${s.percent}%`;$('summary-message').textContent=t('answeredMessage',{n:s.total});$('result-subjects').replaceChildren();
     for(const subject of SUBJECTS){const qs=state.questions.filter(q=>q.subject===subject.id);if(!qs.length)continue;const right=qs.filter(q=>state.answers.get(q.id)===q.answer).length;const tr=document.createElement('tr');for(const text of [subjectLabel(subject.id),String(right),String(qs.length)]){const td=document.createElement('td');td.textContent=text;tr.append(td);}$('result-subjects').append(tr);}
     if(focus)$('summary-heading').focus();return currentSnapshot();
   }
   function navigateQuestion(direction){
     if(!['next','previous'].includes(direction))throw practiceError('invalidNavigation');
-    if(direction==='previous'){if(state.index>0)state.index--;}else{const q=state.questions[state.index];if(!state.answers.has(q.id))throw practiceError('answerFirst');if(state.index===state.questions.length-1)return showResults();state.index++;}
-    $('summary').hidden=true;$('quiz-card').hidden=false;renderQuestion(true);return currentSnapshot();
+    state.index=Math.max(0,Math.min(state.questions.length-1,state.index+(direction==='next'?1:-1)));
+    const q=state.questions[state.index];if(q){const card=cardFor(q.id);card.scrollIntoView({block:'start'});part(card,'heading').focus({preventScroll:true});}
+    return currentSnapshot();
   }
-  function reviewAnswers(){if(score().answered<state.questions.length)throw practiceError('unfinished');state.review=true;state.index=0;$('summary').hidden=true;$('quiz-card').hidden=false;renderQuestion(true);return currentSnapshot();}
+  function reviewAnswers(){if(score().answered<state.questions.length)throw practiceError('unfinished');state.review=true;state.index=0;$('quiz-card').hidden=false;$('review-banner').hidden=false;$('scroll-title').focus();return currentSnapshot();}
   let pendingConfig=null;
   function requestSession(config){try{validateConfig(config);if(state.answers.size&&score().answered<state.questions.length){pendingConfig=config;$('restart-dialog').showModal();}else createSession(config);}catch(e){visibleError={key:e.translationKey,message:e.message};$('error').textContent=e.message;$('error').hidden=false;}}
   document.querySelectorAll('[data-language-choice]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.languageChoice)));
-  $('hint-button').addEventListener('click',toggleHint);
-  $('subject-select').addEventListener('change',()=>refreshTopics());$('topic-select').addEventListener('change',()=>updateAvailable());$('count-select').addEventListener('change',()=>updateAvailable());$('start-button').addEventListener('click',()=>requestSession(readControls()));$('previous-button').addEventListener('click',()=>navigateQuestion('previous'));$('next-button').addEventListener('click',()=>navigateQuestion('next'));$('review-button').addEventListener('click',reviewAnswers);$('restart-button').addEventListener('click',()=>createSession(state.config));
+  $('question-list').addEventListener('click',event=>{
+    const button=event.target.closest('button[data-action]');if(!button||!$('question-list').contains(button))return;
+    const card=button.closest('.practice-question'),q=questionFor(Number(card?.dataset.questionId));if(!q)return;
+    if(button.dataset.action==='answer')selectAnswer(Number(button.dataset.option),q.id);
+    else if(button.dataset.action==='hint')toggleHint(q.id);
+    else if(button.dataset.action==='image')showSourceImages(q);
+  });
+  $('show-results-button').addEventListener('click',()=>showResults(true));
+  $('subject-select').addEventListener('change',()=>refreshTopics());$('topic-select').addEventListener('change',()=>updateAvailable());$('count-select').addEventListener('change',()=>updateAvailable());$('start-button').addEventListener('click',()=>requestSession(readControls()));$('review-button').addEventListener('click',reviewAnswers);$('restart-button').addEventListener('click',()=>createSession(state.config));
   $('cancel-reset').addEventListener('click',()=>{pendingConfig=null;$('restart-dialog').close();syncControls();setLive('resumed');});$('confirm-reset').addEventListener('click',()=>{const config=pendingConfig;pendingConfig=null;$('restart-dialog').close();if(config)createSession(config);});$('restart-dialog').addEventListener('cancel',()=>{pendingConfig=null;syncControls();});
   $('image-close').addEventListener('click',()=>{$('image-dialog').close();$('image-full').replaceChildren();});
   applyLanguage();
@@ -628,10 +740,10 @@ function setLanguage(value){
   const modelContext=document.modelContext;
   if(modelContext&&typeof modelContext.registerTool==='function'){
     const lifecycle=new AbortController();const register=tool=>{try{Promise.resolve(modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch(_){}};
-    register({name:'read_tet_practice',title:'Read TET practice',description:'Read the visible practice question, available subjects, and current score. The bank contains all 2,700 Paper 2A Maths and Science questions with original diagrams and source answer keys. Some questions are images and must be read visually. Every question has a study hint, visible on request before answering and automatically after answering. Correct answers are returned only after the learner has answered the current question.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({...currentSnapshot(),subjects:SUBJECTS.map(s=>({id:s.id,label:s.label,questions:BANK.filter(q=>q.subject===s.id).length}))})});
+    register({name:'read_tet_practice',title:'Read TET practice',description:'Read the current practice selection and score. All selected questions are displayed together in a scrolling list. The bank contains all 2,700 Paper 2A Maths and Science questions with original diagrams and source answer keys. Some questions are images and must be read visually. Every question has a study hint, visible on request before answering and automatically after answering. Correct answers are returned only after the learner has answered the current question.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:()=>({...currentSnapshot(),subjects:SUBJECTS.map(s=>({id:s.id,label:s.label,questions:BANK.filter(q=>q.subject===s.id).length}))})});
     register({name:'start_tet_practice',title:'Start TET practice',description:'Start a new TET practice session and reset the current session score. Use replaceCurrent=true only when the learner requests replacing an unfinished session with recorded answers.',inputSchema:{type:'object',properties:{subject:{type:'string',enum:['all',...SUBJECTS.map(s=>s.id)]},count:{type:'string',enum:['10','20','30','all']},replaceCurrent:{type:'boolean'}},required:['subject','count'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||typeof input!=='object')throw new Error('Invalid input.');const config={subject:input.subject,topic:'all',count:input.count};validateConfig(config);if(state.answers.size&&score().answered<state.questions.length&&input.replaceCurrent!==true)throw new Error('Starting a new session would reset recorded answers. Ask the learner before replacing it.');return createSession(config);}});
-    register({name:'answer_tet_question',title:'Answer TET question',description:'Record one answer for the currently visible question, then show the source answer key, study hint and updated score. The first answer is final. questionId must match the visible question to prevent answering a stale question.',inputSchema:{type:'object',properties:{questionId:{type:'integer'},option:{type:'integer',minimum:1,maximum:4}},required:['questionId','option'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||!Number.isInteger(input.questionId)||input.questionId!==state.questions[state.index]?.id)throw new Error('The question has changed. Read the current question first.');if(!Number.isInteger(input.option)||input.option<1||input.option>4)throw new Error('Option must be from 1 to 4.');if(!$('summary').hidden)throw new Error('Practice is complete. Start a new session to answer.');return selectAnswer(input.option-1);}});
-    register({name:'navigate_tet_practice',title:'Navigate TET practice',description:'Move to the next answered practice question or the previous question. Moving past the last answered question displays final results.',inputSchema:{type:'object',properties:{direction:{type:'string',enum:['next','previous']}},required:['direction'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>navigateQuestion(input?.direction)});
+    register({name:'answer_tet_question',title:'Answer TET question',description:'Record an answer for any question in the current scrolling practice, then update that question with the correct answer, study hint and score. The first answer for each question is final.',inputSchema:{type:'object',properties:{questionId:{type:'integer'},option:{type:'integer',minimum:1,maximum:4}},required:['questionId','option'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>{if(!input||!Number.isInteger(input.questionId)||!questionFor(input.questionId))throw new Error('This question is not in the current practice session.');if(!Number.isInteger(input.option)||input.option<1||input.option>4)throw new Error('Option must be from 1 to 4.');if(!$('summary').hidden)throw new Error('Practice is complete. Start a new session to answer.');return selectAnswer(input.option-1,input.questionId);}});
+    register({name:'navigate_tet_practice',title:'Navigate TET practice',description:'Scroll to the next or previous question in the practice list. All questions remain displayed, and answering is optional before navigation.',inputSchema:{type:'object',properties:{direction:{type:'string',enum:['next','previous']}},required:['direction'],additionalProperties:false},annotations:{readOnlyHint:false},execute:input=>navigateQuestion(input?.direction)});
     window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
   }
   </script>
